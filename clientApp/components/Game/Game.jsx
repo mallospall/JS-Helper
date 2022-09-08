@@ -1,10 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
+import Buttons from './Buttons';
+import Example from './Example';
+import Header from './Header';
+import Qestion from './Qestion';
 
 function Game() {
   return (
     <View>
-      <Text>Регистрация</Text>
+      <Header />
+      <Qestion />
+      <Example />
+      <Buttons />
     </View>
   );
 }
