@@ -10,6 +10,14 @@ function Homescreen({ navigation }) {
         title="Go to Registration"
         onPress={() => navigation.navigate('Reg')}
       />
+      <Button
+        title="Go to Login"
+        onPress={() => navigation.navigate('Log')}
+      />
+      <Button
+        title="Go to Game"
+        onPress={() => navigation.navigate('Game')}
+      />
     </View>
   );
 }
