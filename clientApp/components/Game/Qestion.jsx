@@ -1,15 +1,25 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, Text, View } from 'react-native';
 
 function Qestion() {
+  const [back, setBack] = useState([]);
+  useEffect(
+    () => fetch('http://localhost:3002/question')
+      .then((res) => res.json())
+      .then((data) => setBack(data[0])),
+    [],
+  );
+
   return (
     <View style={{
       height: 150,
       alignItems: 'center',
     }}
     >
+      <Image source={{ uri: `http://localhost:3002${back?.question}` }} />
+
       <Text style={{ fontSize: 25 }}>
-        Witch of the following is correct?
+        {back?.list}
       </Text>
     </View>
   );

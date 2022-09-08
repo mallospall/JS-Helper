@@ -3,7 +3,6 @@ import { Text, View } from 'react-native';
 
 function Header() {
   const num = 12;
-//   const total = 100;
   return (
     <View style={{
       backgroundColor: '#423d53',
@@ -17,11 +16,6 @@ function Header() {
         Quiz: №
         {num}
       </Text>
-      {/* <Text style={{ fontSize: 30, color: 'white' }}>
-        Total:
-        {' '}
-        {total}
-      </Text> */}
     </View>
   );
 }
