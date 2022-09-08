@@ -1,16 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Text, View } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button, View, Text } from 'react-native';
 
-const Homescreen = ({navigation}) => {
-    console.log(navigation);
-    return (
-        <View>
-            <Text>
-                Homescreen
-            </Text>
-        </View>
-    );
+function Homescreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Registration"
+        onPress={() => navigation.navigate('Reg')}
+      />
+    </View>
+  );
 }
 
 export default Homescreen;
