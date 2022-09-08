@@ -81,7 +81,7 @@ app.get('/question', async (req, res) => {
   try {
     const numofQuestion = await Question.findAll();
     console.log('123');
-    const r = Math.floor(Math.random() * numofQuestion.length);
+    const r = Math.floor(Math.random() * numofQuestion.length + 1);
     const newQuestion = await Question.findAll({ where: { id: r } });
     res.json(newQuestion);
   } catch (error) {
