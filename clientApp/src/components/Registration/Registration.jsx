@@ -3,9 +3,9 @@ import {
   StyleSheet, Text, TextInput, View, Button,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { colors } from '../../constants';
+import { colors } from '../../../constants';
 
-function Login() {
+function Registration() {
   return (
     <View
       style={{
@@ -16,6 +16,11 @@ function Login() {
       }}
     >
       <View style={{ width: 300 }}>
+        <TextInput
+          style={stylesCreated.input}
+          placeholder="Enter name"
+          secureTextEntry
+        />
         <TextInput
           style={stylesCreated.input}
           placeholder="Enter email"
@@ -49,4 +54,4 @@ const stylesCreated = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Registration;
