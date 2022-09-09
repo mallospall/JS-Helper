@@ -1,17 +1,12 @@
+/* eslint-disable default-param-last */
 import {
-  SET_SIGNUP, SET_LOGIN, LOGOUT, SET_AUTH,
+  LOGOUT, SET_AUTH,
 } from '../types/types';
 
 export default (state = null, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SET_SIGNUP:
-      return payload;
-
-    case SET_LOGIN:
-      return payload;
-
     case LOGOUT:
       return null;
 

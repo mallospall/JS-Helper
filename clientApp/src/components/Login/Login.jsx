@@ -1,34 +1,15 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TextInput, View, Button, Image, AsyncStorage
+  StyleSheet, Text, TextInput, View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../../constants';
 
 function Login() {
-  const { auth } = useSelector((s)=>s)
-  console.log(auth)
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem(
-        '@MySuperStore:key',
-        'I like to save it.'
-      );
-    } catch (error) {
-      // Error saving data
-    }
-  };
-  const checkData = async () => {
-    try {
-     const value = await AsyncStorage.getItem(
-        '@MySuperStore:key'
-      );
-      console.log(value)
-    } catch (error) {
-      // Error saving data
-    }
-  };
+  const { auth } = useSelector((s) => s);
+  // const [input, setInput] = useState()
+  console.log(auth);
 
   return (
     <View
@@ -49,11 +30,11 @@ function Login() {
           placeholder="Enter password"
           secureTextEntry
         />
-        <TouchableOpacity onPress={storeData} style={stylesCreated.input} >
+        <TouchableOpacity style={stylesCreated.input}>
           <Text style={{ textAlign: 'center' }}>Войти</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={checkData} style={stylesCreated.input} >
+        <TouchableOpacity style={stylesCreated.input}>
           <Text style={{ textAlign: 'center' }}>check</Text>
         </TouchableOpacity>
       </View>

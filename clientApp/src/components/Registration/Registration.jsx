@@ -1,11 +1,24 @@
+/* eslint-disable no-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  StyleSheet, Text, TextInput, View, Button,
+  StyleSheet, Text, TextInput, View,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../../constants';
+import { GET_SESSION_THUNK, SET_SESSION_THUNK } from '../../redux/actions/authAction';
 
 function Registration() {
+  const [inputs, setInputs] = useState({ name: '', email: '', password: '' });
+
+  const dispatch = useDispatch((s) => s);
+
+  const submitHandler = () => {
+    // dispatch(SET_SESSION_THUNK(inputs));
+    console.log(inputs)
+  };
+
   return (
     <View
       style={{
@@ -19,18 +32,20 @@ function Registration() {
         <TextInput
           style={stylesCreated.input}
           placeholder="Enter name"
-          secureTextEntry
+          onChangeText={(text) => setInputs({ ...inputs, name: text })}
         />
         <TextInput
           style={stylesCreated.input}
           placeholder="Enter email"
+          onChangeText={(text) => setInputs({ ...inputs, email: text })}
         />
         <TextInput
           style={stylesCreated.input}
           placeholder="Enter password"
           secureTextEntry
+          onChangeText={(text) => setInputs({ ...inputs, password: text })}
         />
-        <TouchableOpacity style={stylesCreated.input}>
+        <TouchableOpacity style={stylesCreated.input} onPress={submitHandler}>
           <Text style={{ textAlign: 'center' }}>Войти</Text>
         </TouchableOpacity>
         {/* <Button
