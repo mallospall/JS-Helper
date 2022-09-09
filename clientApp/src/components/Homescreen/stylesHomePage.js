@@ -1,7 +1,7 @@
 import {
   StyleSheet,
 } from 'react-native';
-import { fontsText, colors } from '../../../constants';
+import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
   card: {
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     // '#363636'
   },
   description: {
-    fontFamily: fontsText.fontFamily,
+    // fontFamily: fontsText.fontFamily,
     fontSize: 40,
     paddingVertical: 20,
     color: colors.buttonColor,
@@ -33,11 +33,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: 350,
     textAlign: 'center',
-    fontFamily: fontsText.fontFamily,
   },
   buttonText: {
     fontSize: 20,
-    fontFamily: fontsText.fontFamily,
+    // fontFamily: fontsText.fontFamily,
   },
 });
 

@@ -1,23 +1,29 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-tabs */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   StyleSheet, Text, TextInput, View,
-  TouchableOpacity,
+  TouchableOpacity, Alert, AsyncStorage,
 } from 'react-native';
 import { colors } from '../../../constants';
 import { GET_SESSION_THUNK, SET_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
+import { getStorage, removeStorage } from '../../redux/actions/AsyncStorageFunc';
 
-function Registration() {
+function Registration({ navigation }) {
   const [inputs, setInputs] = useState({ name: '', email: '', password: '' });
 
   const dispatch = useDispatch((s) => s);
 
   const submitHandler = () => {
-    // dispatch(SET_SESSION_THUNK(inputs));
-    console.log(inputs);
+    if (inputs.email !== '' || inputs.email !== '' || inputs.password !== '') {
+      dispatch(SET_SESSION_THUNK(inputs));
+      navigation.navigate('Home');
+    } else {
+      Alert.alert('Ошибка', 'Заполните все поля');
+    }
   };
 
   return (
