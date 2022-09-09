@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-function Header() {
-  const num = 12;
+function Header({ currentQestionId }) {
   return (
     <View style={{
       backgroundColor: '#423d53',
@@ -13,8 +12,8 @@ function Header() {
     }}
     >
       <Text style={{ fontSize: 40, color: 'white' }}>
-        Quiz: №
-        {num}
+        Вопрос: №
+        {currentQestionId + 1}
       </Text>
     </View>
   );

@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TextInput, View, Button,
+  StyleSheet, Text, TextInput, View, Button, AsyncStorage
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../../constants';
 
 function Registration() {
+  const storeData = async () => {
+    try {
+    const lol =  await AsyncStorage.getItem(
+        '@MySuperStore:key',
+      );
+      console.log(lol)
+    } catch (error) {
+      // Error saving data
+    }
+  };
   return (
     <View
       style={{
@@ -30,7 +40,7 @@ function Registration() {
           placeholder="Enter password"
           secureTextEntry
         />
-        <TouchableOpacity style={stylesCreated.input}>
+        <TouchableOpacity style={stylesCreated.input} onPress={storeData}>
           <Text style={{ textAlign: 'center' }}>Войти</Text>
         </TouchableOpacity>
         {/* <Button
