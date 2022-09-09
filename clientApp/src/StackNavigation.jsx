@@ -11,11 +11,11 @@ const Stack = createNativeStackNavigator();
 function StackNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Homescreen} options={{ title: 'Overview' }} />
-        <Stack.Screen name="Reg" component={Registration} options={{ title: 'Registration' }} />
-        <Stack.Screen name="Log" component={Login} options={{ title: 'Login' }} />
-        <Stack.Screen name="Game" component={Game} options={{ title: 'Game-Page' }} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Homescreen} />
+        <Stack.Screen name="Reg" component={Registration} />
+        <Stack.Screen name="Log" component={Login} />
+        <Stack.Screen name="Game" component={Game} />
       </Stack.Navigator>
     </NavigationContainer>
 

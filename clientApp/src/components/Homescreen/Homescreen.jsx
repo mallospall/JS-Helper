@@ -1,49 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  StyleSheet, View, Text, TouchableOpacity,
+  View, Text, TouchableOpacity,
 } from 'react-native';
-import { fontsText, fontsTitle, colors } from '../../../constants';
+import { colors } from '../../../constants';
+import styles from './stylesHomePage';
 
 function Homescreen({ navigation }) {
-  const styles = StyleSheet.create({
-    card: {
-      backgroundColor: '#363636', flex: 1, justifyContent: 'center', alignItems: 'center',
-      // '#363636'
-    },
-    description: {
-      fontFamily: fontsText.fontFamily,
-      fontSize: 40,
-      paddingVertical: 20,
-      color: colors.buttonColor,
-      fontWeight: '700',
-      fontStyle: 'italic',
-
-    },
-    cardButton: {
-      backgroundColor: colors.buttonColor,
-      paddingVertical: 10,
-      marginVertical: 10,
-      width: 300,
-      height: 50,
-      borderRadius: 20,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    msg: {
-      color: 'white',
-      marginVertical: 20,
-      fontSize: 16,
-      width: 350,
-      textAlign: 'center',
-      color: 'white',
-      fontFamily: fontsText.fontFamily,
-    },
-    buttonText: {
-      fontSize: 20,
-      fontFamily: fontsText.fontFamily,
-    },
-  });
   return (
     <View style={styles.card}>
       <Text style={styles.description}>JS - Helper</Text>

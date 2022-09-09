@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: 350,
     textAlign: 'center',
-    color: 'white',
     fontFamily: fontsText.fontFamily,
   },
   buttonText: {
