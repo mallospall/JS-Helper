@@ -1,71 +1,59 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { AsyncStorage } from 'react-native';
+import React, { useEffect } from 'react';
 import {
-  StyleSheet, View, Text, TouchableOpacity,
+  View, Text, TouchableOpacity,
 } from 'react-native';
-import { fontsText, fontsTitle, colors } from '../../../constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_SESSION_THUNK, LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
+// import { colors } from '../../../constants';
+import styles from './stylesHomePage';
 
 function Homescreen({ navigation }) {
-  const styles = StyleSheet.create({
-    card: {
-      backgroundColor: '#363636', flex: 1, justifyContent: 'center', alignItems: 'center',
-      // '#363636'
-    },
-    description: {
-      fontFamily: fontsText.fontFamily,
-      fontSize: 40,
-      paddingVertical: 20,
-      color: colors.buttonColor,
-      fontWeight: '700',
-      fontStyle: 'italic',
+  const { auth } = useSelector((s) => s);
+  console.log('auth--->', auth);
 
-    },
-    cardButton: {
-      backgroundColor: colors.buttonColor,
-      paddingVertical: 10,
-      marginVertical: 10,
-      width: 300,
-      height: 50,
-      borderRadius: 20,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    msg: {
-      color: 'white',
-      marginVertical: 20,
-      fontSize: 16,
-      width: 350,
-      textAlign: 'center',
-      color: 'white',
-      fontFamily: fontsText.fontFamily,
-    },
-    buttonText: {
-      fontSize: 20,
-      fontFamily: fontsText.fontFamily,
-    },
-  });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(GET_SESSION_THUNK());
+  }, []);
+
   return (
     <View style={styles.card}>
       <Text style={styles.description}>JS - Helper</Text>
       <Text style={styles.msg}>Изучайтe JS вместе с нами и найдите свою первую работу</Text>
       <View style={styles.buttonBlock}>
-        <TouchableOpacity
-          style={styles.cardButton}
-          title="Registration"
-          onPress={() => navigation.navigate('Reg')}
-        >
-          <Text style={styles.buttonText}>Регистрация</Text>
+        {!auth ? (
+          <>
+            <TouchableOpacity
+              style={styles.cardButton}
+              title="Registration"
+              onPress={() => navigation.navigate('Reg')}
+            >
+              <Text style={styles.buttonText}>Регистрация</Text>
 
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cardButton}
-          title="Login"
-          onPress={() => navigation.navigate('Log')}
-        >
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cardButton}
+              title="Login"
+              onPress={() => navigation.navigate('Log')}
+            >
 
-          <Text style={styles.buttonText}>Авторизация</Text>
+              <Text style={styles.buttonText}>Авторизация</Text>
 
-        </TouchableOpacity>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <TouchableOpacity
+            style={styles.cardButton}
+            title="Logout"
+            onPress={() => dispatch(LOGOUT_SESSION_THUNK())}
+          >
+
+            <Text style={styles.buttonText}>Выход</Text>
+
+          </TouchableOpacity>
+        )}
 
       </View>
     </View>

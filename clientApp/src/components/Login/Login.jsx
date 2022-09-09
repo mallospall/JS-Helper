@@ -10,7 +10,7 @@ import styles from '../Homescreen/stylesHomePage';
 function Login() {
   const { auth } = useSelector((s) => s);
   // const [input, setInput] = useState()
-  console.log(auth);
+  // console.log(auth);
 
   return (
     <View
@@ -31,7 +31,7 @@ function Login() {
           placeholder="Enter password"
           secureTextEntry
         />
-        <TouchableOpacity style={styles.cardButton}>
+        <TouchableOpacity style={styles.cardButton} onPress={()=>(console.log(auth))} >
           <Text style={styles.buttonText}>Войти</Text>
         </TouchableOpacity>
 
