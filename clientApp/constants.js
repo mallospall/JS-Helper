@@ -5,6 +5,7 @@ export const colors = {
   DARK: '#1A1A1A',
   GOLD: '#FFD700',
   buttonColor: '#fad481',
+  mainColor: '#363636',
 
 };
 
