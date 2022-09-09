@@ -28,6 +28,6 @@ export const styles = {
   },
 };
 
-export const fontsText = {
-  fontFamily: 'Roboto',
-};
+// export const fontsText = {
+//   fontFamily: 'Roboto',
+// };
