@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 function Example() {
   return (
     <View style={{
-      height: 200,
+      height: '25%',
       alignItems: 'center',
       backgroundColor: 'black',
       margin: 10,

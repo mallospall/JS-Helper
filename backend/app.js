@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-const https = require("https");
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
@@ -10,7 +9,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const { User, Question } = require('./db/models');
 
-const PORT = 8000;
+const PORT = 3002;
 const app = express();
 app.use(cors({
   credentials: true,
@@ -91,16 +90,16 @@ app.get('/question', async (req, res) => {
   }
 });
 
-app.post('/que', async (req, res) => {
-  try {
-    const { num } = req.body;
-    console.log(num);
-  } catch (error) {
-    console.log(error);
-    res.json(error);
-  }
-});
+// app.post('/que', async (req, res) => {
+//   try {
+//     const { num } = req.body;
+//     console.log(num);
+//   } catch (error) {
+//     console.log(error);
+//     res.json(error);
+//   }
+// });
 
-https.createServer(app).listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server has been started on PORT ${PORT}`);
 });

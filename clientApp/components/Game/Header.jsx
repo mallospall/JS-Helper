@@ -6,7 +6,7 @@ function Header() {
   return (
     <View style={{
       backgroundColor: '#423d53',
-      height: 200,
+      height: '20%',
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
