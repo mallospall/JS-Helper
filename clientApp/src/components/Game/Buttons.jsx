@@ -68,11 +68,17 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
         <TouchableOpacity
           onPress={nextHandler}
           style={{
-            marginTop: 20, width: '100%', backgroundColor: 'yellow', padding: 20, borderRadius: 3,
+            marginTop: 20,
+            width: '100%',
+            backgroundColor: 'yellow',
+            padding: 20,
+            borderRadius: 10,
+            border: 1,
+            borderColor: 'black',
           }}
         >
           <Text
-            style={{ fontSize: 20, color: 'white', textAlign: 'center' }}
+            style={{ fontSize: 20, color: 'black', textAlign: 'center' }}
           >
             Next
           </Text>
@@ -103,7 +109,11 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           onPress={() => validateAnswer(elem)}
           key={elem}
         >
-          <Text>{elem}</Text>
+          <Text
+            style={{ fontSize: 20 }}
+          >
+            {elem}
+          </Text>
 
           {/* PART OF CHECK THE CORRECT OR WRONG BUTTON ICON */}
 

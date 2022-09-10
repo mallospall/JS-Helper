@@ -18,9 +18,9 @@ const data = [
   },
   {
     id: 3,
-    question: 'https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg',
-    list: '42|"42"|7|"NaN"',
-    answer: '7',
+    question: 'https://avatarko.ru/img/kartinka/27/ogon_lev_26792.jpg',
+    list: '4|"4"|6|"naN"',
+    answer: '4',
     createdAt: '2022-09-08T14:04:12.294Z',
     updatedAt: '2022-09-08T14:04:12.294Z',
   },

@@ -13,11 +13,13 @@ function Qestion({ currentQestionId }) {
 
   // test fetch to https heroku
   const [test, setTest] = useState('');
-  useEffect(async () => {
-    const ress = await fetch('https://teabloogg.herokuapp.com/api/teas');
-    const json = await ress.json();
-    setTest(json);
-    console.log(ress);
+  useEffect(() => {
+    async function img() {
+      const ress = await fetch('https://teabloogg.herokuapp.com/api/teas');
+      const json = await ress.json();
+      setTest(json);
+    }
+    img();
   }, []);
 
   return (
