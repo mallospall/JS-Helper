@@ -19,7 +19,7 @@ function Game() {
   return (
     <View>
       <Header currentQestionId={currentQestionId} />
-      <Buttons currentQestionId={currentQestionId} />
+      <Buttons currentQestionId={currentQestionId} setCurrentQestionId={setCurrentQestionId} />
       <Qestion currentQestionId={currentQestionId} />
       {/* <Example currentQestionId={currentQestionId} /> */}
     </View>

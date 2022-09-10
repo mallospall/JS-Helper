@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TextInput, View, Button, Image, AsyncStorage
+  StyleSheet, Text, TextInput, View, Button, Image, AsyncStorage,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../../constants';
 
 function Login() {
-  const { auth } = useSelector((s)=>s)
-  console.log(auth)
+  const { auth } = useSelector((s) => s);
+  console.log(auth);
   const storeData = async () => {
     try {
       await AsyncStorage.setItem(
         '@MySuperStore:key',
-        'I like to save it.'
+        'I like to save it.',
       );
     } catch (error) {
       // Error saving data
@@ -21,10 +21,10 @@ function Login() {
   };
   const checkData = async () => {
     try {
-     const value = await AsyncStorage.getItem(
-        '@MySuperStore:key'
+      const value = await AsyncStorage.getItem(
+        '@MySuperStore:key',
       );
-      console.log(value)
+      console.log(value);
     } catch (error) {
       // Error saving data
     }
@@ -49,11 +49,11 @@ function Login() {
           placeholder="Enter password"
           secureTextEntry
         />
-        <TouchableOpacity onPress={storeData} style={stylesCreated.input} >
+        <TouchableOpacity onPress={storeData} style={stylesCreated.input}>
           <Text style={{ textAlign: 'center' }}>Войти</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={checkData} style={stylesCreated.input} >
+        <TouchableOpacity onPress={checkData} style={stylesCreated.input}>
           <Text style={{ textAlign: 'center' }}>check</Text>
         </TouchableOpacity>
       </View>

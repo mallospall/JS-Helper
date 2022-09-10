@@ -11,6 +11,15 @@ function Qestion({ currentQestionId }) {
   const allQestions = data; // <----- замена беку на время
   dispatch(getQestions(allQestions));
 
+  // test fetch to https heroku
+  const [test, setTest] = useState('');
+  useEffect(async () => {
+    const ress = await fetch('https://teabloogg.herokuapp.com/api/teas');
+    const json = await ress.json();
+    setTest(json);
+    console.log(ress);
+  }, []);
+
   return (
     <View>
       <View
@@ -23,11 +32,16 @@ function Qestion({ currentQestionId }) {
       >
         <Image
           style={{
-            height: '80%',
-            width: '80%',
+            height: 100,
+            // '80%',
+            width: 100,
+            // '80%',
             borderRadius: 10,
           }}
-          source={{ uri: qestions[currentQestionId].question }}
+          source={{
+            uri: test[0]?.img,
+            // qestions[currentQestionId].question
+          }}
         />
       </View>
     </View>

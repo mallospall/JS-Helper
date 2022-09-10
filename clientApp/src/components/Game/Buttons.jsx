@@ -5,21 +5,22 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getQestions } from '../../redux/actions/Actions';
-import data from './data/testData'; // <----- замена беку на время
+import data from './data/testData';
+// <----- замена беку на время
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: '3%',
-    margin: '3%',
-    marginLeft: '15%',
-    marginRight: '15%',
-    borderRadius: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   button: {
+//     alignItems: 'center',
+//     backgroundColor: '#DDDDDD',
+//     padding: '3%',
+//     margin: '3%',
+//     marginLeft: '15%',
+//     marginRight: '15%',
+//     borderRadius: 10,
+//   },
+// });
 
-function Buttons({ currentQestionId }) {
+function Buttons({ currentQestionId, setCurrentQestionId }) {
   const { qestions } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -30,6 +31,8 @@ function Buttons({ currentQestionId }) {
   const [correctOption, setCorrectOption] = useState(null);
   const [isOptionDisabled, setIsOptionDisabled] = useState(false);
   const [score, setScore] = useState(0);
+  const [showNextButton, setShowNextButton] = useState(false);
+  const [showScoreModal, setShowScoreModal] = useState(false);
 
   const splitList = qestions[currentQestionId].list.split('|');
 
@@ -41,9 +44,44 @@ function Buttons({ currentQestionId }) {
     setIsOptionDisabled(true);
 
     if (selectedOption === currentCorrectOption) {
+      // console.log(score);
       setScore(score + 1);
+      // console.log(score);
     }
+    setShowNextButton(true);
   };
+
+  const nextHandler = () => {
+    if (currentQestionId === qestions.length - 1) {
+      setShowScoreModal(true);
+    }
+    setCurrentQestionId(currentQestionId + 1);
+    setCurrentOptionSelected(null);
+    setCorrectOption(null);
+    setIsOptionDisabled(false);
+    setShowNextButton(false);
+  };
+
+  const renderNextButton = () => {
+    if (showNextButton) {
+      return (
+        <TouchableOpacity
+          onPress={nextHandler}
+          style={{
+            marginTop: 20, width: '100%', backgroundColor: 'yellow', padding: 20, borderRadius: 3,
+          }}
+        >
+          <Text
+            style={{ fontSize: 20, color: 'white', textAlign: 'center' }}
+          >
+            Next
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+    return null;
+  };
+
   return (
     <View>
       { splitList?.map((elem) => (
@@ -52,8 +90,8 @@ function Buttons({ currentQestionId }) {
             borderWidth: 3,
             borderColor:
             elem === correctOption ? 'green'
-            : elem === currentOptionSelected ? 'red'
-            : 'grey' + '20',
+              : elem === currentOptionSelected ? 'red'
+                : 'grey' + '20',
             height: 60,
             borderRadius: 20,
             flexDirection: 'row',
@@ -66,6 +104,9 @@ function Buttons({ currentQestionId }) {
           key={elem}
         >
           <Text>{elem}</Text>
+
+          {/* PART OF CHECK THE CORRECT OR WRONG BUTTON ICON */}
+
           {
             // eslint-disable-next-line no-nested-ternary
             elem === correctOption ? (
@@ -106,8 +147,10 @@ function Buttons({ currentQestionId }) {
               </View>
             ) : null
           }
+          {/* BUTTON NEXT */}
         </TouchableOpacity>
       ))}
+      {renderNextButton()}
     </View>
   );
 }

@@ -9,6 +9,7 @@ function Header({ currentQestionId }) {
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
+      maxHeight: 50
     }}
     >
       <Text style={{ fontSize: 40, color: 'white' }}>
