@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TouchableOpacity, View,
+  Modal, Text, TouchableOpacity, View,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { getQestions } from '../../redux/actions/Actions';
 import data from './data/testData';
 // <----- замена беку на время
-
-// const styles = StyleSheet.create({
-//   button: {
-//     alignItems: 'center',
-//     backgroundColor: '#DDDDDD',
-//     padding: '3%',
-//     margin: '3%',
-//     marginLeft: '15%',
-//     marginRight: '15%',
-//     borderRadius: 10,
-//   },
-// });
 
 function Buttons({ currentQestionId, setCurrentQestionId }) {
   const { qestions } = useSelector((state) => state);
@@ -34,19 +22,17 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
 
-  const splitList = qestions[currentQestionId].list.split('|');
+  const splitList = qestions[currentQestionId]?.list.split('|');
 
   const validateAnswer = (selectedOption) => {
-    const currentCorrectOption = qestions[currentQestionId].answer;
+    const currentCorrectOption = qestions[currentQestionId]?.answer;
 
     setCurrentOptionSelected(selectedOption);
     setCorrectOption(currentCorrectOption);
     setIsOptionDisabled(true);
 
     if (selectedOption === currentCorrectOption) {
-      // console.log(score);
       setScore(score + 1);
-      // console.log(score);
     }
     setShowNextButton(true);
   };
@@ -109,6 +95,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           onPress={() => validateAnswer(elem)}
           key={elem}
         >
+          {/* QESTION BUTTON */}
           <Text
             style={{ fontSize: 20 }}
           >
@@ -157,10 +144,64 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
               </View>
             ) : null
           }
-          {/* BUTTON NEXT */}
         </TouchableOpacity>
       ))}
+
+      {/* BUTTON NEXT */}
       {renderNextButton()}
+
+      {/* SCORE MODAL */}
+      <Modal
+        animationType="slide"
+        transparent
+        visible={showScoreModal}
+      >
+        <View style={{
+          flex: 1,
+          backgroundColor: 'green',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        >
+          <View style={{
+            backgroundColor: 'white',
+            width: '90%',
+            borderRadius: 20,
+            padding: 20,
+            alignItems: 'center',
+          }}
+          >
+            <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
+              { score > (qestions.length / 2) ? 'Congratulations!' : 'Oops!' }
+            </Text>
+
+            <View style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              marginVertical: 20,
+            }}
+            >
+              <Text style={{
+                fontSize: 30,
+                color: score > (qestions.length / 2) ? 'green' : 'red',
+              }}
+              >
+                {score}
+              </Text>
+              <Text style={{
+                fontSize: 20, color: 'black',
+              }}
+              >
+                /
+                { qestions.length }
+
+              </Text>
+            </View>
+            {/* will be button to retry or go to main page */}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }

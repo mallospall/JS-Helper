@@ -34,15 +34,18 @@ function Qestion({ currentQestionId }) {
       >
         <Image
           style={{
-            height: 100,
-            // '80%',
-            width: 100,
-            // '80%',
+            height:
+            // 100,
+            '50%',
+            width:
+            // 100,
+            '80%',
             borderRadius: 10,
           }}
           source={{
-            uri: test[0]?.img,
-            // qestions[currentQestionId].question
+            uri:
+            // test[0]?.img, // <=== картинка не меняется динамически
+            qestions[currentQestionId]?.question,
           }}
         />
       </View>
