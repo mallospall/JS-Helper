@@ -158,7 +158,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
       >
         <View style={{
           flex: 1,
-          backgroundColor: 'green',
+          backgroundColor: '#E1CC4F',
           alignItems: 'center',
           justifyContent: 'center',
         }}
