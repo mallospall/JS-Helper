@@ -1,63 +1,45 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, Text, TextInput, View, Button, Image, AsyncStorage,
+  StyleSheet, Text, TextInput, View,
+  TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { colors } from '../../../constants';
+import styles from '../Homescreen/stylesHomePage';
 
 function Login() {
   const { auth } = useSelector((s) => s);
-  console.log(auth);
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem(
-        '@MySuperStore:key',
-        'I like to save it.',
-      );
-    } catch (error) {
-      // Error saving data
-    }
-  };
-  const checkData = async () => {
-    try {
-      const value = await AsyncStorage.getItem(
-        '@MySuperStore:key',
-      );
-      console.log(value);
-    } catch (error) {
-      // Error saving data
-    }
-  };
+  // const [input, setInput] = useState()
+  // console.log(auth);
 
   return (
-    <View
-      style={{
-			  backgroundColor: colors.GOLD,
+    <KeyboardAvoidingView behavior="padding">
+      <View
+        style={{
+			  backgroundColor: colors.mainColor,
 			  height: '100%',
 			  justifyContent: 'center',
 			  alignItems: 'center',
-      }}
-    >
-      <View style={{ width: 300 }}>
-        <TextInput
-          style={stylesCreated.input}
-          placeholder="Enter email"
-        />
-        <TextInput
-          style={stylesCreated.input}
-          placeholder="Enter password"
-          secureTextEntry
-        />
-        <TouchableOpacity onPress={storeData} style={stylesCreated.input}>
-          <Text style={{ textAlign: 'center' }}>Войти</Text>
-        </TouchableOpacity>
+        }}
+      >
+        <View style={{ width: 300 }}>
+          <TextInput
+            style={stylesCreated.input}
+            placeholder="Enter email"
+          />
+          <TextInput
+            style={stylesCreated.input}
+            placeholder="Enter password"
+            secureTextEntry
+          />
+          <TouchableOpacity style={styles.cardButton} onPress={() => (console.log(auth))}>
+            <Text style={styles.buttonText}>Войти</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={checkData} style={stylesCreated.input}>
-          <Text style={{ textAlign: 'center' }}>check</Text>
-        </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
