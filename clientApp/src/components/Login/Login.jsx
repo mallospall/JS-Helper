@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   StyleSheet, Text, TextInput, View,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../../../constants';
@@ -13,30 +14,32 @@ function Login() {
   // console.log(auth);
 
   return (
-    <View
-      style={{
+    <KeyboardAvoidingView behavior="padding">
+      <View
+        style={{
 			  backgroundColor: colors.mainColor,
 			  height: '100%',
 			  justifyContent: 'center',
 			  alignItems: 'center',
-      }}
-    >
-      <View style={{ width: 300 }}>
-        <TextInput
-          style={stylesCreated.input}
-          placeholder="Enter email"
-        />
-        <TextInput
-          style={stylesCreated.input}
-          placeholder="Enter password"
-          secureTextEntry
-        />
-        <TouchableOpacity style={styles.cardButton} onPress={()=>(console.log(auth))} >
-          <Text style={styles.buttonText}>Войти</Text>
-        </TouchableOpacity>
+        }}
+      >
+        <View style={{ width: 300 }}>
+          <TextInput
+            style={stylesCreated.input}
+            placeholder="Enter email"
+          />
+          <TextInput
+            style={stylesCreated.input}
+            placeholder="Enter password"
+            secureTextEntry
+          />
+          <TouchableOpacity style={styles.cardButton} onPress={() => (console.log(auth))}>
+            <Text style={styles.buttonText}>Войти</Text>
+          </TouchableOpacity>
 
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
