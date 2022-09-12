@@ -6,10 +6,11 @@ import SideMenu from '../SideMenu/SideMenu';
 function GeneralScreen({ navigation }) {
   return (
     <>
-      <View style={styles.card} >
+      <View style={styles.card}>
         <Text>GENERALPAGE</Text>
       </View>
       <SideMenu navigation={navigation} />
+
     </>
   );
 }

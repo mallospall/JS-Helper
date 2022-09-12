@@ -4,6 +4,11 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  aboutContainer: {
+    backgroundColor: colors.mainColor,
+    flex: 1,
+    alignItems: 'center',
+  },
   card: {
     backgroundColor: colors.mainColor, flex: 1, justifyContent: 'center', alignItems: 'center',
     // '#363636'
@@ -16,6 +21,24 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontStyle: 'italic',
 
+  },
+  aboutImg: {
+    marginVertical: 70,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    width: 310,
+    height: 300,
+  },
+  aboutTextLink: {
+    fontSize: 18,
+    color: '#24A0ED',
+    textDecorationLine: 'underline',
+  },
+  aboutText: {
+    alignItems: 'center',
+    fontSize: 18,
+    width: 310,
+    color: 'white',
   },
   cardButton: {
     backgroundColor: colors.buttonColor,

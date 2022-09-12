@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  View, Text, StyleSheet, Image, TouchableNativeFeedback,
+  View, StyleSheet, Image, TouchableNativeFeedback,
 } from 'react-native';
 
 function SideMenu({ navigation }) {
@@ -37,22 +37,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     flexDirection: 'row',
-    height: '10%',
+    height: 70,
     justifyContent: 'space-between',
     bottom: 0,
-    
+
   },
   icons: {
-    maxWidth: '40%',
-    borderRadius: '50px',
+    width: 60,
+    borderRadius: 50,
     resizeMode: 'stretch',
-    width: 20,
-    height: '70%',
+    height: 60,
     // backgroundColor: '#9E9E9E',
-    // height: null,
-    // width: null,
-    flex: 1,
-    margin: 4,
     // fontSize: 30,
   },
 });
