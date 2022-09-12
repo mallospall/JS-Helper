@@ -1,41 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import data from './data/testData'; // <----- замена беку на время
+import { getQestions } from '../../redux/actions/Actions';
 
-function Qestion() {
-  // const [back, setBack] = useState(null);
-  // const qestionBack = async () => {
-  //   try {
-  //     const response = await fetch('http://172.20.10.4:3002/question');
-  //     const json = await response.json();
-  //     setBack(json);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  //   //   .then((res) => res.json())
-  //   //   .then((data) => setBack(data[0]));
-  // };
-  // useEffect(() => {
-  //   qestionBack();
-  // }, []);
-  // console.log('------>', back);
+function Qestion({ currentQestionId }) {
+  const { qestions } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const allQestions = data; // <----- замена беку на время
+  dispatch(getQestions(allQestions));
+
+  // test fetch to https heroku
+  const [test, setTest] = useState('');
+  useEffect(() => {
+    async function img() {
+      const ress = await fetch('https://teabloogg.herokuapp.com/api/teas');
+      const json = await ress.json();
+      setTest(json);
+    }
+    img();
+  }, []);
+
   return (
-    <View style={{
-      height: '15%',
-      alignItems: 'center',
-    }}
-    >
-      <Image
+    <View>
+      <View
         style={{
-          width: 45,
-          height: 45,
+          margin: 10,
+          alignItems: 'flex-end',
+          height: '60%',
+          alignItems: 'center',
         }}
-        // source={{ uri: `http://localhost:3002${back?.qestion}` }}
-      />
-
-      <Text style={{ fontSize: 25 }}>
-        {/* {back?.list} */}
-        text
-      </Text>
+      >
+        <Image
+          style={{
+            height:
+            // 100,
+            '50%',
+            width:
+            // 100,
+            '80%',
+            borderRadius: 10,
+          }}
+          source={{
+            uri:
+            // test[0]?.img, // <=== картинка не меняется динамически
+            qestions[currentQestionId]?.question,
+          }}
+        />
+      </View>
     </View>
   );
 }

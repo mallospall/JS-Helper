@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GET_SESSION_THUNK, LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 // import { colors } from '../../../constants';
 import styles from './stylesHomePage';
+import SideMenu from '../SideMenu/SideMenu';
 
 function Homescreen({ navigation }) {
   const { auth } = useSelector((s) => s);
@@ -47,11 +48,9 @@ function Homescreen({ navigation }) {
           <TouchableOpacity
             style={styles.cardButton}
             title="Logout"
-            onPress={() => dispatch(LOGOUT_SESSION_THUNK())}
+            onPress={() => navigation.navigate('General')}
           >
-
-            <Text style={styles.buttonText}>Выход</Text>
-
+            <Text style={styles.buttonText}>Get started</Text>
           </TouchableOpacity>
         )}
 
