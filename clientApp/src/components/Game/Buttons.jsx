@@ -2,18 +2,12 @@ import React, { useState } from 'react';
 import {
   Modal, Text, TouchableOpacity, View,
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { getQestions } from '../../redux/actions/Actions';
-import data from './data/testData';
-// <----- замена беку на время
+import { colors } from '../../../constants';
 
-function Buttons({ currentQestionId, setCurrentQestionId }) {
+function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const { qestions } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const allQestions = data; // <----- замена беку на время
-  dispatch(getQestions(allQestions));
 
   const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
   const [correctOption, setCorrectOption] = useState(null);
@@ -56,7 +50,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           style={{
             marginTop: 20,
             width: '100%',
-            backgroundColor: 'yellow',
+            backgroundColor: colors.buttonColor,
             padding: 20,
             borderRadius: 10,
             border: 1,
@@ -172,7 +166,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           }}
           >
             <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
-              { score > (qestions.length / 2) ? 'Congratulations!' : 'Oops!' }
+              { score > (qestions.length / 2) ? 'Поздравляем!' : 'Ооой!' }
             </Text>
 
             <View style={{
@@ -198,8 +192,26 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
 
               </Text>
             </View>
-            {/* will be button to retry or go to main page */}
           </View>
+          {/* RETURN TO MAIN BUTTON */}
+          <TouchableOpacity
+            onPress={() => navigation.navigate('General')}
+            style={{
+              backgroundColor: 'blue',
+              padding: 20,
+              margin: 20,
+              width: '100%',
+              borderRadius: 20,
+            }}
+          >
+            <Text
+              style={{
+                textAlign: 'center', color: 'white', fontSize: 20,
+              }}
+            >
+              Return
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>

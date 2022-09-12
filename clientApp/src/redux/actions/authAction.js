@@ -9,7 +9,7 @@ export const logout = () => ({ type: LOGOUT });
 
 export const SET_SESSION_THUNK = (data) => async (dispatch) => {
   const cookie = { email: data.email, name: data.name };
-  await AsyncStorage.setItem('session',JSON.stringify(cookie));
+  await AsyncStorage.setItem('session', JSON.stringify(cookie));
   dispatch(login(cookie));
 };
 

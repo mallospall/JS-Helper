@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import Example from './Example';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './Header';
 import Buttons from './Buttons';
 import Qestion from './Qestion';
-import { getQestions } from '../../redux/actions/Actions';
-import data from './data/testData'; // <----- замена беку на время
+import { GET_QESTION_THUNK, getQestions} from '../../redux/actions/qestionAction';
 
-function Game() {
+function Game({ navigation }) {
   // const { qestions } = useSelector((s) => s);
   const dispatch = useDispatch();
 
-  const allQestions = data; // <----- замена беку на время
-  dispatch(getQestions(allQestions));
+  useEffect(() => {
+    dispatch(GET_QESTION_THUNK());
+  }, []);
+  // const allQestions = data; // <----- замена беку на время
+  // dispatch(getQestions(allQestions));
   const [currentQestionId, setCurrentQestionId] = useState(0);
 
   return (
     <View>
       <Header currentQestionId={currentQestionId} />
-      <Buttons currentQestionId={currentQestionId} setCurrentQestionId={setCurrentQestionId} />
+      <Buttons
+        currentQestionId={currentQestionId}
+        setCurrentQestionId={setCurrentQestionId}
+        navigation={navigation}
+      />
       <Qestion currentQestionId={currentQestionId} />
-      {/* <Example currentQestionId={currentQestionId} /> */}
     </View>
   );
 }

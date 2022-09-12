@@ -1,25 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Image, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import data from './data/testData'; // <----- замена беку на время
-import { getQestions } from '../../redux/actions/Actions';
+import { getQestions, GET_QESTION_THUNK } from '../../redux/actions/qestionAction';
 
 function Qestion({ currentQestionId }) {
   const { qestions } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const allQestions = data; // <----- замена беку на время
-  dispatch(getQestions(allQestions));
-
-  // test fetch to https heroku
-  const [test, setTest] = useState('');
   useEffect(() => {
-    async function img() {
-      const ress = await fetch('https://teabloogg.herokuapp.com/api/teas');
-      const json = await ress.json();
-      setTest(json);
-    }
-    img();
+    dispatch(GET_QESTION_THUNK());
   }, []);
 
   return (
@@ -34,9 +23,11 @@ function Qestion({ currentQestionId }) {
       >
         <Image
           style={{
+            resizeMode: 'stretch',
+
             height:
             // 100,
-            '50%',
+            '60%',
             width:
             // 100,
             '80%',
@@ -44,8 +35,9 @@ function Qestion({ currentQestionId }) {
           }}
           source={{
             uri:
-            // test[0]?.img, // <=== картинка не меняется динамически
-            qestions[currentQestionId]?.question,
+            `https://js-helper.herokuapp.com${qestions[0]?.question}`,
+            // test[0]?.question, // <=== картинка не меняется динамически
+            // qestions[currentQestionId]?.question,
           }}
         />
       </View>
