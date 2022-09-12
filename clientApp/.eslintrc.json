@@ -17,5 +17,7 @@
         "react"
     ],
     "rules": {
+        "disable react/prop-types": 0,
+        "disable global-require": 0,
     }
 }

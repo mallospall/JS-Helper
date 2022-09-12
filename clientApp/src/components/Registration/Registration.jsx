@@ -1,8 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   StyleSheet, Text, TextInput, View, Button,
   TouchableOpacity, Alert, AsyncStorage, KeyboardAvoidingView,
@@ -18,7 +15,7 @@ function Registration({ navigation }) {
   const dispatch = useDispatch((s) => s);
 
   const submitHandler = () => {
-    if (inputs.email !== '' || inputs.email !== '' || inputs.password !== '') {
+    if (inputs.email !== '' && inputs.name !== '' && inputs.password !== '') {
       dispatch(SET_SESSION_THUNK(inputs));
       navigation.navigate('General');
     } else {

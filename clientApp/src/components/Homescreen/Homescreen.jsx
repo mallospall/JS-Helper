@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { AsyncStorage } from 'react-native';
 import React, { useEffect } from 'react';
 import {

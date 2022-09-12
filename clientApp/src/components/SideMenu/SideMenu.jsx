@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  View, Text, StyleSheet, Image, TouchableNativeFeedback,
+  View, StyleSheet, Image, TouchableNativeFeedback,
 } from 'react-native';
 
 function SideMenu({ navigation }) {
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
     height: '10%',
     justifyContent: 'space-between',
     bottom: 0,
-    
+
   },
   icons: {
     maxWidth: '40%',
