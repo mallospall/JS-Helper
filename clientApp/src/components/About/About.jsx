@@ -11,7 +11,7 @@ export default function About() {
     <View style={styles.aboutContainer}>
       <Image
         style={styles.aboutImg}
-        source={require('./hizir-logo.jpg')}
+        source={require('./dungeon-team.jpg')}
       />
       <Text style={styles.aboutText}>
         Привет дорогой пользователь мы команда разработчиков JS-Helper, мы очень рады что ты пользуешься нашим приложением и мы делаем все чтобы ты мог с весельем и пользой проводит свое время в нашем приложении, с любовью
