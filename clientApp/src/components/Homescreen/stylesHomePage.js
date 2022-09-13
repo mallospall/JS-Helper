@@ -4,6 +4,30 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  genCard: {
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: colors.mainColor,
+  },
+  genDescription: {
+    paddingVertical: 60,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    color: 'white',
+    fontSize: 24,
+  },
+  genLinkButton: {
+    backgroundColor: colors.buttonColor,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  genNew: {
+    color: 'black',
+    fontSize: 17,
+  },
   aboutContainer: {
     backgroundColor: colors.mainColor,
     flex: 1,
