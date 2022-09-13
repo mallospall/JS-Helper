@@ -1,29 +1,38 @@
 /* eslint-disable react/prop-types */
-import { AsyncStorage } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View, Text, TouchableOpacity,
+  useWindowDimensions,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_SESSION_THUNK, LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
+import RenderHTML from 'react-native-render-html';
+import { GET_SESSION_THUNK } from '../../redux/actions/authAction';
 // import { colors } from '../../../constants';
 import styles from './stylesHomePage';
-import SideMenu from '../SideMenu/SideMenu';
 
 function Homescreen({ navigation }) {
   const { auth } = useSelector((s) => s);
-  console.log('auth--->', auth);
-
+  const { width } = useWindowDimensions();
   const dispatch = useDispatch();
+  const [first, setfirst] = useState('');
   useEffect(() => {
     dispatch(GET_SESSION_THUNK());
   }, []);
-
+  useEffect(() => {
+    fetch('https://js-helper.herokuapp.com/test')
+      .then((res) => res.json())
+      .then((data) => setfirst({ html: data }));
+  }, []);
+  console.log(first);
   return (
     <View style={styles.card}>
       <Text style={styles.description}>JS - Helper</Text>
       <Text style={styles.msg}>Изучайтe JS вместе с нами и найдите свою первую работу</Text>
       <View style={styles.buttonBlock}>
+        <RenderHTML
+          contentWidth={width}
+          source={first}
+        />
         {!auth ? (
           <>
             <TouchableOpacity
