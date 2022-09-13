@@ -20,7 +20,7 @@ function Profile({ navigation }) {
       <View
         style={styles.lk}
       >
-        <ProgressScore />
+        <ProgressScore auth={auth} />
         <Text>{auth?.name}</Text>
         <TouchableOpacity
           style={styles.cardButton}

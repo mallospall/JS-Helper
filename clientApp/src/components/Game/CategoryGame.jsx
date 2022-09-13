@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TouchableNativeFeedback, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { colors, styles } from '../../../constants';
+import { colors } from '../../../constants';
 import { GET_QESTION_CATEGORY_THUNK } from '../../redux/actions/qestionAction';
 
 function CategoryGame({ navigation }) {
@@ -9,13 +9,13 @@ function CategoryGame({ navigation }) {
 
   const categoryHandel = (categoryName) => {
     if (categoryName === 'jun') {
-      dispatch(GET_QESTION_CATEGORY_THUNK(categoryName));
+      dispatch(GET_QESTION_CATEGORY_THUNK(1));
     } else if (categoryName === 'mid') {
-      dispatch(GET_QESTION_CATEGORY_THUNK(categoryName));
+      dispatch(GET_QESTION_CATEGORY_THUNK(2));
     } else if (categoryName === 'sen') {
-      dispatch(GET_QESTION_CATEGORY_THUNK(categoryName));
-    } else if (categoryName === 'job') {
-      dispatch(GET_QESTION_CATEGORY_THUNK(categoryName));
+      dispatch(GET_QESTION_CATEGORY_THUNK(3));
+    } else if (categoryName === 'rev') {
+      dispatch(GET_QESTION_CATEGORY_THUNK(4));
     }
     navigation.navigate('Game');
   };
@@ -95,7 +95,7 @@ function CategoryGame({ navigation }) {
       </TouchableNativeFeedback>
       <TouchableNativeFeedback>
         <Text
-          onPress={() => categoryHandel('job')}
+          onPress={() => categoryHandel('rev')}
           style={{
             backgroundColor: colors.buttonColor,
             paddingVertical: 10,

@@ -68,10 +68,16 @@ function Progress({ step, steps, height }) {
   );
 }
 
-function ProgressScore() {
+// <=== score user ===>
+
+// useEffect(() => {
+
+// }, []);
+
+function ProgressScore({ auth }) {
   return (
     <View style={styles.container}>
-      <Progress step={10} steps={10} height={20} />
+      <Progress step={auth} steps={100 * auth} height={20} />
     </View>
   );
 }

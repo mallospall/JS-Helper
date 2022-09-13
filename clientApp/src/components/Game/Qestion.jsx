@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Image, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { getQestions, GET_QESTION_THUNK } from '../../redux/actions/qestionAction';
+import { useSelector } from 'react-redux';
 
 function Qestion({ currentQestionId }) {
-  const { qestions } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(GET_QESTION_THUNK());
-  }, []);
-
+  const { qestionCategory } = useSelector((state) => state);
   return (
     <View>
       <View
@@ -24,20 +17,14 @@ function Qestion({ currentQestionId }) {
         <Image
           style={{
             resizeMode: 'stretch',
-
             height:
-            // 100,
-            '60%',
+            150,
             width:
-            // 100,
-            '80%',
+            300,
             borderRadius: 10,
           }}
           source={{
-            uri:
-            `https://js-helper.herokuapp.com${qestions[0]?.question}`,
-            // test[0]?.question, // <=== картинка не меняется динамически
-            // qestions[currentQestionId]?.question,
+            uri: `https://js-helper.herokuapp.com${qestionCategory[currentQestionId]?.question}`,
           }}
         />
       </View>
