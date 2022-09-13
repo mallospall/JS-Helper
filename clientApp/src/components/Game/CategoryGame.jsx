@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableNativeFeedback, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { colors } from '../../../constants';
 import { GET_QESTION_CATEGORY_THUNK } from '../../redux/actions/qestionAction';
@@ -38,13 +38,10 @@ function CategoryGame({ navigation }) {
         Category
       </Text>
 
-      <TouchableNativeFeedback
-        style={{
-          borderRadius: 10,
-        }}
+      <TouchableOpacity
+        onPress={() => categoryHandel('jun')}
       >
-        <Text
-          onPress={() => categoryHandel('jun')}
+        <View
           style={{
             backgroundColor: colors.buttonColor,
             paddingVertical: 10,
@@ -56,12 +53,15 @@ function CategoryGame({ navigation }) {
             justifyContent: 'center',
           }}
         >
-          Jun
-        </Text>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback>
-        <Text
-          onPress={() => categoryHandel('mid')}
+          <Text>
+            Jun
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => categoryHandel('mid')}
+      >
+        <View
           style={{
             backgroundColor: colors.buttonColor,
             paddingVertical: 10,
@@ -73,12 +73,15 @@ function CategoryGame({ navigation }) {
             justifyContent: 'center',
           }}
         >
-          Mid
-        </Text>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback>
-        <Text
-          onPress={() => categoryHandel('sen')}
+          <Text>
+            Mid
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => categoryHandel('sen')}
+      >
+        <View
           style={{
             backgroundColor: colors.buttonColor,
             paddingVertical: 10,
@@ -90,12 +93,15 @@ function CategoryGame({ navigation }) {
             justifyContent: 'center',
           }}
         >
-          Sen
-        </Text>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback>
-        <Text
-          onPress={() => categoryHandel('rev')}
+          <Text>
+            Sen
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => categoryHandel('rev')}
+      >
+        <View
           style={{
             backgroundColor: colors.buttonColor,
             paddingVertical: 10,
@@ -107,9 +113,11 @@ function CategoryGame({ navigation }) {
             justifyContent: 'center',
           }}
         >
-          Job
-        </Text>
-      </TouchableNativeFeedback>
+          <Text>
+            Job
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

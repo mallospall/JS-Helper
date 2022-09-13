@@ -68,27 +68,14 @@ function Progress({ step, steps, height }) {
   );
 }
 
-// <=== score user ===>
-
-// useEffect(() => {
-
-// }, []);
+// <=== !!!!!!!!!!!!!!! ===> need to merge
 
 function ProgressScore({ auth }) {
   return (
     <View style={styles.container}>
-      <Progress step={auth} steps={100 * auth} height={20} />
+      {/* <Progress step={auth?.exp} steps={6110} height={20} /> */}
     </View>
   );
 }
 
 export default ProgressScore;
-
-// const stylesProgressBar = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#f2f2f3',
-//     justifyContent: 'center',
-//     padding: 20,
-//   },
-// });
