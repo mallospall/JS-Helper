@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
@@ -17,7 +16,7 @@ function Profile({ navigation }) {
   return (
     <>
       <View style={styles.card}>
-        <Text>{auth?.name}</Text>
+        <Text style={styles.buttonText} >{auth?.userName}</Text>
         <TouchableOpacity
           style={styles.cardButton}
           title="Logout"
