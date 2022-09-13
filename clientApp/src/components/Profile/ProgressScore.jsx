@@ -1,14 +1,88 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Animated, StyleSheet, Text, View,
+} from 'react-native';
+import styles from '../Homescreen/stylesHomePage';
+
+function Progress({ step, steps, height }) {
+  const [width, setWidth] = useState(0);
+  const animatedValue = useRef(new Animated.Value(-1000)).current;
+  const reactive = useRef(new Animated.Value(-1000)).current;
+
+  useEffect(() => {
+    Animated.timing(animatedValue, {
+      toValue: reactive,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
+  useEffect(() => {
+    reactive.setValue(-width + (width * step) / steps);
+  }, [step, width]);
+
+  return (
+    <>
+      <Text
+        style={{
+          fontFamily: 'Menlo',
+          fontSIze: 12,
+          fontWeight: '900',
+          marginBottom: 4,
+        }}
+      >
+        Ваш прогресс:
+        {step}
+        /
+        {steps}
+      </Text>
+      <View
+        onLayout={(e) => {
+          const newWigth = e.nativeEvent.layout.width;
+          setWidth(newWigth);
+        }}
+        style={{
+          width: 300,
+          height,
+          backgroundColor: 'rgba(0,0,0,0.1)',
+          borderRadius: height,
+          overflow: 'hidden',
+        }}
+      >
+        <Animated.View
+          style={{
+            height,
+            width: 300,
+            borderRadius: height,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            transform: [{
+              translateX: animatedValue,
+            }],
+          }}
+        />
+      </View>
+    </>
+  );
+}
 
 function ProgressScore() {
   return (
-    <View>
-      <Text>
-        вы пидор на 100%
-      </Text>
+    <View style={styles.container}>
+      <Progress step={10} steps={10} height={20} />
     </View>
   );
 }
 
 export default ProgressScore;
+
+// const stylesProgressBar = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#f2f2f3',
+//     justifyContent: 'center',
+//     padding: 20,
+//   },
+// });

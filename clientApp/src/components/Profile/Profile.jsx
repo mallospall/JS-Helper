@@ -17,9 +17,11 @@ function Profile({ navigation }) {
   };
   return (
     <>
-      <View style={styles.card}>
-        <Text>{auth?.name}</Text>
+      <View
+        style={styles.lk}
+      >
         <ProgressScore />
+        <Text>{auth?.name}</Text>
         <TouchableOpacity
           style={styles.cardButton}
           title="Logout"

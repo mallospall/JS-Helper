@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mainColor, flex: 1, justifyContent: 'center', alignItems: 'center',
     // '#363636'
   },
+  lk: {
+    backgroundColor: colors.mainColor, flex: 1, justifyContent: 'center', alignItems: 'center',
+    // '#363636'
+  },
   description: {
     // fontFamily: fontsText.fontFamily,
     fontSize: 40,
