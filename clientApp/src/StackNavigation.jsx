@@ -6,6 +6,7 @@ import { Text } from 'react-native';
 import Homescreen from './components/Homescreen/Homescreen';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
+import Category from './components/Game/CategoryGame';
 import Game from './components/Game/Game';
 import SideMenu from './components/SideMenu/SideMenu';
 import Profile from './components/Profile/Profile';
@@ -28,7 +29,8 @@ function StackNavigation() {
           <Stack.Screen name="Home" component={Homescreen} options={{ title: 'Overview' }} />
           <Stack.Screen name="Reg" component={Registration} options={{ title: 'Registration' }} />
           <Stack.Screen name="Log" component={Login} options={{ title: 'Login' }} />
-          <Stack.Screen name="Game" component={Game} options={{ title: 'Game-Page' }} />
+          <Stack.Screen name="Category" component={Category} options={{ title: 'Category' }} />
+          <Stack.Screen name="Game" component={Game} options={{ title: 'Game' }} />
           {/* <Stack.Screen name="Menu" component={SideMenu} options={{ title: 'Side-Menu' }} /> */}
           <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
           <Stack.Screen name="General" component={GeneralScreen} options={{ title: 'General' }} />

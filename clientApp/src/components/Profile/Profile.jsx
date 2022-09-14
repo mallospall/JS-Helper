@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
+import ProgressScore from './ProgressScore';
 
 function Profile({ navigation }) {
   const { auth } = useSelector((s) => s);
@@ -15,8 +16,11 @@ function Profile({ navigation }) {
   };
   return (
     <>
-      <View style={styles.card}>
-        <Text style={styles.buttonText} >{auth?.userName}</Text>
+      <View
+        style={styles.lk}
+      >
+        <ProgressScore auth={auth} />
+        <Text>{auth?.name}</Text>
         <TouchableOpacity
           style={styles.cardButton}
           title="Logout"

@@ -6,7 +6,3 @@ export const setSignup = (data) => ({ type: SET_SIGNUP, payload: data });
 export const setLogin = (data) => ({ type: SET_LOGIN, payload: data });
 export const logout = () => ({ type: LOGOUT });
 export const CHECK_AUTH_THUNK = (data) => ({ type: SET_AUTH, payload: data });
-
-// QESTIONS
-
-export const getQestions = (data) => ({ type: QESTIONS, payload: data });

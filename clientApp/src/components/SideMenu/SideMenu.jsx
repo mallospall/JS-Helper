@@ -20,7 +20,7 @@ function SideMenu() {
         <Image style={styles.icons} source={require('./icons/home.png')} />
       </TouchableNativeFeedback>
 
-      <TouchableNativeFeedback onPress={() => navigation.navigate('Game')}>
+      <TouchableNativeFeedback onPress={() => navigation.navigate('Category')}>
         <Image style={styles.icons} source={require('./icons/quest.png')} />
       </TouchableNativeFeedback>
 

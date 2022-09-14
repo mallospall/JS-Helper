@@ -4,16 +4,16 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { getQestions } from '../../redux/actions/Actions';
-import data from './data/testData';
-// <----- замена беку на время
+import { colors } from '../../../constants';
+import { SENDING_SCORE_THUNK } from '../../redux/actions/qestionAction';
 
-function Buttons({ currentQestionId, setCurrentQestionId }) {
-  const { qestions } = useSelector((state) => state);
+function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
+  // const { qestions } = useSelector((state) => state);
+  const { qestionCategory } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
+  const priseQestion = qestionCategory[0]?.Category.price;
+
   const dispatch = useDispatch();
-
-  const allQestions = data; // <----- замена беку на время
-  dispatch(getQestions(allQestions));
 
   const [currentOptionSelected, setCurrentOptionSelected] = useState(null);
   const [correctOption, setCorrectOption] = useState(null);
@@ -22,24 +22,25 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
 
-  const splitList = qestions[currentQestionId]?.list.split('|');
+  const splitListCateg = qestionCategory[currentQestionId]?.list.split('|');
 
   const validateAnswer = (selectedOption) => {
-    const currentCorrectOption = qestions[currentQestionId]?.answer;
+    const currentCorrectOption = qestionCategory[currentQestionId]?.answer;
 
     setCurrentOptionSelected(selectedOption);
     setCorrectOption(currentCorrectOption);
     setIsOptionDisabled(true);
 
     if (selectedOption === currentCorrectOption) {
-      setScore(score + 1);
+      setScore(score + priseQestion);
     }
     setShowNextButton(true);
   };
 
   const nextHandler = () => {
-    if (currentQestionId === qestions.length - 1) {
+    if (currentQestionId === qestionCategory.length - 1) {
       setShowScoreModal(true);
+      dispatch(SENDING_SCORE_THUNK(score, auth?.id));
     }
     setCurrentQestionId(currentQestionId + 1);
     setCurrentOptionSelected(null);
@@ -56,7 +57,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           style={{
             marginTop: 20,
             width: '100%',
-            backgroundColor: 'yellow',
+            backgroundColor: colors.buttonColor,
             padding: 20,
             borderRadius: 10,
             border: 1,
@@ -76,7 +77,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
 
   return (
     <View>
-      { splitList?.map((elem) => (
+      { splitListCateg?.map((elem) => (
         <TouchableOpacity
           style={{
             borderWidth: 3,
@@ -172,7 +173,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
           }}
           >
             <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
-              { score > (qestions.length / 2) ? 'Congratulations!' : 'Oops!' }
+              { score > (qestionCategory.length / 2) ? 'Поздравляем!' : 'Ооой!' }
             </Text>
 
             <View style={{
@@ -184,7 +185,7 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
             >
               <Text style={{
                 fontSize: 30,
-                color: score > (qestions.length / 2) ? 'green' : 'red',
+                color: score > (qestionCategory.length / 2) ? 'green' : 'red',
               }}
               >
                 {score}
@@ -194,12 +195,30 @@ function Buttons({ currentQestionId, setCurrentQestionId }) {
               }}
               >
                 /
-                { qestions.length }
+                { qestionCategory.length * priseQestion}
 
               </Text>
             </View>
-            {/* will be button to retry or go to main page */}
           </View>
+          {/* RETURN TO MAIN BUTTON */}
+          <TouchableOpacity
+            onPress={() => navigation.navigate('General')}
+            style={{
+              backgroundColor: 'blue',
+              padding: 20,
+              margin: 20,
+              width: '100%',
+              borderRadius: 20,
+            }}
+          >
+            <Text
+              style={{
+                textAlign: 'center', color: 'white', fontSize: 20,
+              }}
+            >
+              Return
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </View>

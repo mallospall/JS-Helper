@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, TextInput
+  View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, TextInput,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_COM_THUNK, GET_COMS_THUNK } from '../../redux/actions/postAction';
@@ -19,6 +19,7 @@ function morePost({ route }) {
   const dispatch = useDispatch();
   const post = route.params;
   const { coms, auth } = useSelector((s) => s);
+  console.log('post----->', coms);
 
   const submitHandler = () => {
     setToggle(!toggle);
@@ -140,6 +141,25 @@ const style = StyleSheet.create({
     justifyContent: 'center,',
     borderRadius: 50,
     flex: 1,
+  },
+  cardButton: {
+    backgroundColor: '#fad481',
+    paddingVertical: 10,
+    marginVertical: 10,
+    width: 340,
+    height: 50,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    width: 300,
   },
 
 });

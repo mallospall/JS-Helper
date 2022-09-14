@@ -58,13 +58,18 @@ export const logout = () => ({ type: LOGOUT });
 //   // await AsyncStorage.setItem('session',JSON.stringify(cookie));
 //   // dispatch(login(cookie));
 // };
+// export const SET_SESSION_THUNK = (data) => async (dispatch) => {
+//   const cookie = { email: data.email, name: data.name };
+//   await AsyncStorage.setItem('session', JSON.stringify(cookie));
+//   dispatch(login(cookie));
+// };
 
 export const GET_SESSION_THUNK = () => async (dispatch) => {
   const cookie = await AsyncStorage.getItem('session');
-  dispatch(login(cookie));
+  dispatch(login(JSON.parse(cookie)));
 };
 
 export const LOGOUT_SESSION_THUNK = () => async (dispatch) => {
-  const cookie = await removeStorage();
+  const cookie = await removeStorage('session');
   dispatch(logout());
 };
