@@ -4,6 +4,11 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  activityIndicatorStyles: {
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   genCard: {
     alignItems: 'center',
     flex: 1,

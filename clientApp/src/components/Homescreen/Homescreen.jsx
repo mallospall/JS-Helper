@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import { AsyncStorage } from 'react-native';
 import React, { useEffect } from 'react';
 import {
-  View, Text, TouchableOpacity,
+  View, Text, TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_SESSION_THUNK, LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
+import { GET_SESSION_THUNK } from '../../redux/actions/authAction';
 // import { colors } from '../../../constants';
 import styles from './stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';

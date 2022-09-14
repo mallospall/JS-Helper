@@ -13,6 +13,7 @@ import GeneralScreen from './components/GeneralScreen/GeneralScreen';
 import Messages from './components/Messages/Messages';
 import Community from './components/Community/Community';
 import About from './components/About/About';
+import morePost from './components/Community/morePost';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ function StackNavigation() {
           <Stack.Screen name="Messages" component={Messages} />
           <Stack.Screen name="Community" component={Community} />
           <Stack.Screen name="About" component={About} />
+          <Stack.Screen name="Post" component={morePost} />
         </Stack.Navigator>
       </NavigationContainer>
       {/* {auth ? (

@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
   View, StyleSheet, Image, TouchableNativeFeedback,
 } from 'react-native';
 
-function SideMenu({ navigation }) {
+function SideMenu() {
+    const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <TouchableNativeFeedback onPress={() => navigation.navigate('Profile')}>
