@@ -26,19 +26,26 @@ function Qestion({ currentQestionId }) {
   const [first, setfirst] = useState({ html: '' });
   useEffect(() => {
     const gg = async () => {
-      await fetch('https://js-helper.herokuapp.com/catque', {
+      console.log('---->>>>>', qestionCategory[currentQestionId]?.question);
+      const responce = await fetch('https://js-helper.herokuapp.com/catque', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(qestionCategory[currentQestionId].question),
-      })
-        .then((res) => res.json())
-        .then((data) => setfirst({ html: `${data}` }));
+        body: JSON.stringify({ path: `${qestionCategory[currentQestionId]?.question}` }),
+      });
+      // console.log('-------->res', responce);
+      if (responce.ok) {
+        const data = await responce.json();
+        console.log('data----->', data);
+        setfirst({ html: `${data}` });
+      }
+      // .then((res) => res.json())
+      // .then((data) => setfirst({ html: `${data}` }));
     };
     gg();
-  }, []);
+  }, [currentQestionId]);
   // console.log('zalupa', qestionCategory[currentQestionId].question);
   return (
     <View
