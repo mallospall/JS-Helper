@@ -8,7 +8,6 @@ import { colors } from '../../../constants';
 import { SENDING_SCORE_THUNK } from '../../redux/actions/qestionAction';
 
 function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
-  // const { qestions } = useSelector((state) => state);
   const { qestionCategory } = useSelector((state) => state);
   const { auth } = useSelector((state) => state);
   const priseQestion = qestionCategory[0]?.Category.price;
@@ -21,8 +20,9 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const [score, setScore] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
-  console.log(qestionCategory[currentQestionId]);
   const splitListCateg = qestionCategory[currentQestionId]?.list.split('|');
+  // <=== !!! need to split to not bo undefind
+  console.log('split', splitListCateg);
 
   const validateAnswer = (selectedOption) => {
     const currentCorrectOption = qestionCategory[currentQestionId]?.answer;

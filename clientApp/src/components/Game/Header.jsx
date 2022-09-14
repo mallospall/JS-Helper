@@ -5,7 +5,7 @@ function Header({ currentQestionId }) {
   return (
     <View style={{
       backgroundColor: '#423d53',
-      height: '20%',
+      height: 60,
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',

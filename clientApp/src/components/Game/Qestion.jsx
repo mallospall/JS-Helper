@@ -12,26 +12,23 @@ const source = {
 };
 function Qestion({ currentQestionId }) {
   const { qestionCategory } = useSelector((state) => state);
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   // const [first, setfirst] = useState({ html: '' });
   // useEffect(() => {
-  //   fetch('https://js-helper.herokuapp.com/test')
+  //   fetch('https://js-helper.herokuapp.com/test',{
+  // body: JSON.stringify({path:qestionCategory[currentQestionId].question})
+  // })
   //     .then((res) => res.json())
   //     .then((data) => setfirst({ html: `${data}` }));
   // }, []);
   // console.log(qestionCategory[currentQestionId].question);
-  console.log(currentQestionId);
 
   return (
-    <View>
-      {/* <View
-        style={{
-          margin: 10,
-          alignItems: 'flex-end',
-          height: '60%',
-          alignItems: 'center',
-        }}
-      /> */}
+    <View
+      style={{
+        display: 'flex',
+      }}
+    >
       <RenderHtml
         contentWidth={width}
         source={source}
