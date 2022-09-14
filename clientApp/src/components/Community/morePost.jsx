@@ -1,16 +1,21 @@
 /* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, TextInput,
+  View, Text, StyleSheet, Image, ScrollView, TouchableOpacity,
+  Modal, TextInput, ActivityIndicator, Alert,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { CREATE_COM_THUNK, GET_COMS_THUNK } from '../../redux/actions/postAction';
+import { colors } from '../../../constants';
+import {
+  createCOM, getCOMS,
+} from '../../redux/actions/postAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 
 function morePost({ route }) {
   const [input, setInput] = useState({ text: '' });
   const [toggle, setToggle] = useState(false);
+  const [load, setLoad] = useState(false);
 
   const openHandler = () => {
     setToggle(!toggle);
@@ -20,13 +25,40 @@ function morePost({ route }) {
   const post = route.params;
   const { coms, auth } = useSelector((s) => s);
 
-  const submitHandler = () => {
-    setToggle(!toggle);
-    dispatch(CREATE_COM_THUNK(input, post.id, auth.id));
+  const submitHandler = async () => {
+    if (input.text !== '') {
+      setToggle(!toggle);
+      setLoad(true);
+      const responce = await fetch(
+        `https://js-helper.herokuapp.com/com/${post?.id}/${auth?.id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(input),
+        },
+      );
+      setInput({ text: '' });
+      if (responce.ok) {
+        const data = await responce.json();
+        dispatch(createCOM(data));
+        setLoad(false);
+      } else {
+        setLoad(false);
+        Alert.alert('Ошибка соединения');
+      }
+    } else { Alert.alert('Заполните поле вводе'); }
   };
 
   useEffect(() => {
-    dispatch(GET_COMS_THUNK(post.id));
+    setLoad(true);
+    fetch(`https://js-helper.herokuapp.com/com/${post?.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(getCOMS(data));
+        setLoad(false);
+      });
   }, []);
 
   return (
@@ -62,15 +94,24 @@ function morePost({ route }) {
           </TouchableOpacity>
           <Text>Ответы:</Text>
           <ScrollView>
-            {coms.map((el) => (
-              <View style={{ marginTop: 10, borderWidth: 3, borderColor: '#fad481' }}>
-                <View style={{ flexDirection: 'row' }}>
-                  <Image style={style.image} source={{ uri: el?.User?.avatar }} />
-                  <Text style={{ marginTop: 10 }}>{el?.User?.userName}</Text>
+            { load ? (
+              <ActivityIndicator
+                color={colors.GOLD}
+                size="large"
+                style={styles.activityIndicatorStyles}
+              />
+            ) : (
+
+              coms.map((el) => (
+                <View style={{ marginTop: 10, borderWidth: 3, borderColor: '#fad481' }}>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Image style={style.image} source={{ uri: el?.User?.avatar }} />
+                    <Text style={{ marginTop: 10 }}>{el?.User?.userName}</Text>
+                  </View>
+                  <Text>{el?.text}</Text>
                 </View>
-                <Text>{el?.text}</Text>
-              </View>
-            ))}
+              ))
+            )}
           </ScrollView>
         </View>
       </View>

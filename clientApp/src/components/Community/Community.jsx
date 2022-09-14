@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, Modal,
+  View, Text, ScrollView, StyleSheet, Modal, Alert, ActivityIndicator,
 } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
-import { CREATE_POST_THUNK, GET_POST_THUNK } from '../../redux/actions/postAction';
+import { colors } from '../../../constants';
+import { createPOST, CREATE_POST_THUNK, getPOSTS, GET_POST_THUNK } from '../../redux/actions/postAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 import Post from './Post';
@@ -14,18 +15,48 @@ function Community() {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({ title: '', text: '' });
   const [toggle, setToggle] = useState(false);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    dispatch(GET_POST_THUNK());
+    setLoad(true);
+    fetch('https://js-helper.herokuapp.com/posts')
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(getPOSTS(data));
+        setLoad(false);
+      });
   }, []);
 
   const openHandler = () => {
     setToggle(!toggle);
   };
 
-  const submitHandler = () => {
-    setToggle(!toggle);
-    dispatch(CREATE_POST_THUNK(inputs, auth.id));
+  const submitHandler = async () => {
+    if (inputs.title !== '' && inputs.text !== '') {
+      setLoad(true);
+      setToggle(!toggle);
+      console.log('inputs -----> ', inputs);
+      const responce = await fetch(
+        `https://js-helper.herokuapp.com/posts/${auth?.id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(inputs),
+        },
+      );
+      setInputs({ title: '', text: '' });
+      if (responce.ok) {
+        const data = await responce.json();
+        console.log('data---->', data, typeof data);
+        dispatch(createPOST(data));
+        setLoad(false);
+      } else {
+        setLoad(false);
+        Alert.alert('Ошибка соединения');
+      }
+    } else { Alert.alert('Заполните все поля'); }
   };
 
   return (
@@ -48,7 +79,15 @@ function Community() {
 
             </TouchableOpacity>
           </View>
-          {posts?.map((el) => <Post post={el} />)}
+          {load ? (
+            <ActivityIndicator
+              color={colors.GOLD}
+              size="large"
+              style={styles.activityIndicatorStyles}
+            />
+          ) : (
+            posts?.map((el) => <Post key={el.id} post={el} />)
+          )}
         </ScrollView>
       </View>
       <Modal animationType="slide" transparent visible={toggle}>
