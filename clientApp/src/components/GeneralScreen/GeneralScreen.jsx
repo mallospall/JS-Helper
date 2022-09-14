@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, Text, TouchableOpacity, Linking, ScrollView, ActivityIndicator,
+  View, Text, TouchableOpacity, Linking, ScrollView, ActivityIndicator, Image,
 } from 'react-native';
 import { colors } from '../../../constants';
 import styles from '../Homescreen/stylesHomePage';
@@ -31,8 +31,15 @@ function GeneralScreen({ navigation }) {
             />
           ) : (
             news?.map((el, i) => (
-              <TouchableOpacity style={styles.genLinkButton} title="link" onPress={() => { Linking.openURL(el.link).catch((err) => console.log('Ошибка в соединении', err)); }}>
+              <TouchableOpacity key={i} style={styles.genLinkButton} title="link" onPress={() => { Linking.openURL(el.link).catch((err) => console.log('Ошибка в соединении', err)); }}>
                 <Text key={i} style={styles.genNew}>{el.title}</Text>
+                <Image
+                  style={styles.itImage}
+                  source={{ uri: el.images }}
+                />
+                <Text style={styles.genNew}>
+                  {el.subTitle}
+                </Text>
               </TouchableOpacity>
             ))
           )}
