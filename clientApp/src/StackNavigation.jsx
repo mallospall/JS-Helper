@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
-import { Text } from 'react-native';
 import Homescreen from './components/Homescreen/Homescreen';
 import Registration from './components/Registration/Registration';
 import Login from './components/Login/Login';
@@ -15,6 +14,7 @@ import Messages from './components/Messages/Messages';
 import Community from './components/Community/Community';
 import About from './components/About/About';
 import morePost from './components/Community/morePost';
+import GameDev from './components/Game/GameDev';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +32,7 @@ function StackNavigation() {
           <Stack.Screen name="Log" component={Login} options={{ title: 'Login' }} />
           <Stack.Screen name="Category" component={Category} options={{ title: 'Category' }} />
           <Stack.Screen name="Game" component={Game} options={{ title: 'Game' }} />
+          <Stack.Screen name="GameDev" component={GameDev} options={{ title: 'GameDev' }} />
           {/* <Stack.Screen name="Menu" component={SideMenu} options={{ title: 'Side-Menu' }} /> */}
           <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
           <Stack.Screen name="General" component={GeneralScreen} options={{ title: 'General' }} />

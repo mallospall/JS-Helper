@@ -10,14 +10,17 @@ function CategoryGame({ navigation }) {
   const categoryHandel = (categoryName) => {
     if (categoryName === 'jun') {
       dispatch(GET_QESTION_CATEGORY_THUNK(1));
+      navigation.navigate('Game');
     } else if (categoryName === 'mid') {
       dispatch(GET_QESTION_CATEGORY_THUNK(2));
+      navigation.navigate('Game');
     } else if (categoryName === 'sen') {
       dispatch(GET_QESTION_CATEGORY_THUNK(3));
+      navigation.navigate('Game');
     } else if (categoryName === 'rev') {
       dispatch(GET_QESTION_CATEGORY_THUNK(4));
+      navigation.navigate('GameDev');
     }
-    navigation.navigate('Game');
   };
 
   return (

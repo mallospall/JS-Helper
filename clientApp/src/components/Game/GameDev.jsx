@@ -4,20 +4,15 @@ import Header from './Header';
 import Buttons from './Buttons';
 import Qestion from './Qestion';
 
-function Game({ navigation }) {
+function GameDev({ navigation }) {
   const [currentQestionId, setCurrentQestionId] = useState(0);
   return (
     <View>
       <Header currentQestionId={currentQestionId} />
-      <Text> ты в гаме</Text>
-      <Buttons
-        currentQestionId={currentQestionId}
-        setCurrentQestionId={setCurrentQestionId}
-        navigation={navigation}
-      />
       <Qestion currentQestionId={currentQestionId} />
+      <Text> ты в гамедев</Text>
     </View>
   );
 }
 
-export default Game;
+export default GameDev;

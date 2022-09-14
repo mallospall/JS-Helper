@@ -21,7 +21,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const [score, setScore] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
-
+  console.log(qestionCategory[currentQestionId]);
   const splitListCateg = qestionCategory[currentQestionId]?.list.split('|');
 
   const validateAnswer = (selectedOption) => {
