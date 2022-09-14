@@ -68,12 +68,10 @@ function Progress({ step, steps, height }) {
   );
 }
 
-// <=== !!!!!!!!!!!!!!! ===> need to merge
-
 function ProgressScore({ auth }) {
   return (
     <View style={styles.container}>
-      <Progress step={auth.exp} steps={6110} height={20} />
+      <Progress step={auth.exp} steps={1110} height={20} />
     </View>
   );
 }

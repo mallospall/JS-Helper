@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { colors } from '../../../constants';
+import { colors, styles } from '../../../constants';
 import { SENDING_SCORE_THUNK } from '../../redux/actions/qestionAction';
 
 function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
@@ -21,8 +21,6 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
   const splitListCateg = qestionCategory[currentQestionId]?.list.split('|');
-  // <=== !!! need to split to not bo undefind
-  console.log('split', splitListCateg);
 
   const validateAnswer = (selectedOption) => {
     const currentCorrectOption = qestionCategory[currentQestionId]?.answer;
@@ -56,7 +54,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
           onPress={nextHandler}
           style={{
             marginTop: 20,
-            width: '100%',
+            // width: '100%',  <===========
             backgroundColor: colors.buttonColor,
             padding: 20,
             borderRadius: 10,
@@ -92,6 +90,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
             justifyContent: 'space-between',
             paddingHorizontal: 20,
             marginVertical: 10,
+            backgroundColor: colors.buttonColor,
           }}
           onPress={() => validateAnswer(elem)}
           key={elem}
@@ -166,7 +165,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
         >
           <View style={{
             backgroundColor: 'white',
-            width: '90%',
+            // width: '90%',  <===========
             borderRadius: 20,
             padding: 20,
             alignItems: 'center',
@@ -207,7 +206,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
               backgroundColor: 'blue',
               padding: 20,
               margin: 20,
-              width: '100%',
+              // width: '100%', <===========
               borderRadius: 20,
             }}
           >

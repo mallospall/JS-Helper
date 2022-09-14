@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 function Header({ currentQestionId }) {
   return (
     <View style={{
+      marginTop: 20,
       backgroundColor: '#423d53',
       height: 60,
       flexDirection: 'row',
