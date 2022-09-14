@@ -2,7 +2,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
-import StackNavigation from './src/StackNavigation';
+import StackNavigation from './src/navigator/StackNavigation';
 
 export default function App() {
   return (
