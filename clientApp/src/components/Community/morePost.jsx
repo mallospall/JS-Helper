@@ -19,7 +19,6 @@ function morePost({ route }) {
   const dispatch = useDispatch();
   const post = route.params;
   const { coms, auth } = useSelector((s) => s);
-  console.log('post----->', coms);
 
   const submitHandler = () => {
     setToggle(!toggle);
@@ -33,7 +32,7 @@ function morePost({ route }) {
   return (
     <>
       <View style={style.post}>
-        {post.postState ? (
+        {post?.postState ? (
           <View style={{
             borderColor: '#FF000', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
           }}
@@ -46,16 +45,16 @@ function morePost({ route }) {
             />
           )}
         <View style={style.head}>
-          <Image style={style.image} source={{ uri: post.User.avatar }} />
-          <Text style={style.text}>{post.User.userName}</Text>
+          <Image style={style.image} source={{ uri: post?.User?.avatar }} />
+          <Text style={style.text}>{post?.User?.userName}</Text>
         </View>
-        <Text style={style.text}>{post.title}</Text>
-        <Text style={style.text}>{post.text}</Text>
+        <Text style={style.text}>{post?.title}</Text>
+        <Text style={style.text}>{post?.text}</Text>
         <View style={{ height: 300, width: 200 }}>
           <TouchableOpacity
             style={style.cardButton}
             title="Open"
-            onPress={submitHandler}
+            onPress={openHandler}
           >
 
             <Text style={styles.buttonText}>Написать ответ</Text>
@@ -66,10 +65,10 @@ function morePost({ route }) {
             {coms.map((el) => (
               <View style={{ marginTop: 10, borderWidth: 3, borderColor: '#fad481' }}>
                 <View style={{ flexDirection: 'row' }}>
-                  <Image style={style.image} source={{ uri: el.User.avatar }} />
-                  <Text style={{ marginTop: 10 }}>{el.User.userName}</Text>
+                  <Image style={style.image} source={{ uri: el?.User?.avatar }} />
+                  <Text style={{ marginTop: 10 }}>{el?.User?.userName}</Text>
                 </View>
-                <Text>{el.text}</Text>
+                <Text>{el?.text}</Text>
               </View>
             ))}
           </ScrollView>
@@ -82,7 +81,7 @@ function morePost({ route }) {
           <TextInput
             style={style.input}
             placeholder="Текст"
-            onChangeText={(text) => setInput({ ...input, title: text })}
+            onChangeText={(textt) => setInput({ ...input, text: textt })}
           />
           <TouchableOpacity
             style={style.cardButton}
