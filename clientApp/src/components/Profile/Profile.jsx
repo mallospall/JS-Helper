@@ -28,6 +28,13 @@ function Profile({ navigation }) {
         >
           <Text style={styles.buttonText}>Выход</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cardButton}
+          title="Logout"
+          onPress={() => navigation.navigate('About')}
+        >
+          <Text style={styles.buttonText}>О проекте</Text>
+        </TouchableOpacity>
       </View>
       <SideMenu navigation={navigation} />
     </>

@@ -4,6 +4,40 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  activityIndicatorStyles: {
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  genCard: {
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: colors.mainColor,
+  },
+  genDescription: {
+    paddingVertical: 60,
+    textAlign: 'center',
+    textDecorationLine: 'underline',
+    color: 'white',
+    fontSize: 24,
+  },
+  genLinkButton: {
+    backgroundColor: colors.buttonColor,
+    paddingVertical: 10,
+    marginVertical: 10,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  genNew: {
+    color: 'black',
+    fontSize: 17,
+  },
+  aboutContainer: {
+    backgroundColor: colors.mainColor,
+    flex: 1,
+    alignItems: 'center',
+  },
   card: {
     backgroundColor: colors.mainColor, flex: 1, justifyContent: 'center', alignItems: 'center',
     // '#363636'
@@ -21,6 +55,24 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
 
   },
+  aboutImg: {
+    marginVertical: 70,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    width: 310,
+    height: 300,
+  },
+  aboutTextLink: {
+    fontSize: 18,
+    color: '#24A0ED',
+    textDecorationLine: 'underline',
+  },
+  aboutText: {
+    alignItems: 'center',
+    fontSize: 18,
+    width: 310,
+    color: 'white',
+  },
   cardButton: {
     backgroundColor: colors.buttonColor,
     paddingVertical: 10,
@@ -37,7 +89,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     width: 350,
     textAlign: 'center',
-    // fontFamily: fontsText.fontFamily,
   },
   buttonText: {
     fontSize: 20,
