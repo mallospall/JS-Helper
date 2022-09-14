@@ -19,6 +19,6 @@ export const GET_SESSION_THUNK = () => async (dispatch) => {
 };
 
 export const LOGOUT_SESSION_THUNK = () => async (dispatch) => {
-  const cookie = await removeStorage();
+  const cookie = await removeStorage('session');
   dispatch(logout());
 };
