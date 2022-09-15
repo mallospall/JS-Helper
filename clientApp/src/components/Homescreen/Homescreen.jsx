@@ -1,15 +1,18 @@
+import React, { useContext, useEffect } from 'react';
 import {
   AsyncStorage,
   View, Text, TouchableOpacity, ActivityIndicator,
 } from 'react-native';
-import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_SESSION_THUNK } from '../../redux/actions/authAction';
+import themeContext from '../config/themeContext';
 // import { colors } from '../../../constants';
 import styles from './stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 
-function Homescreen({ navigation }) {
+function Homescreen({ navigation, mode }) {
+  const theme = useContext(themeContext);
+  console.log('>>>>>>>>>>>?????????????', theme);
   const { auth } = useSelector((s) => s);
   console.log('auth--->', auth);
 

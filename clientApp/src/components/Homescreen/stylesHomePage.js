@@ -4,6 +4,15 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  instaBlock: {
+    flex: 0,
+    flexDirection: 'row',
+  },
+  logoHizImg: {
+    width: 20,
+    height: 20,
+    marginRight: 4,
+  },
   itImage: {
     marginVertical: 20,
     borderRadius: 10,
@@ -38,16 +47,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   genNew: {
+    fontWeight: 'bold',
     color: 'black',
+    fontSize: 20,
+  },
+  genNewSecond: {
     fontSize: 17,
   },
   aboutContainer: {
-    backgroundColor: colors.mainColor,
     flex: 1,
     alignItems: 'center',
   },
   card: {
-    backgroundColor: colors.mainColor, flex: 1, justifyContent: 'center', alignItems: 'center',
+    flex: 1, justifyContent: 'center', alignItems: 'center',
     // '#363636'
   },
   lk: {
@@ -64,18 +76,21 @@ const styles = StyleSheet.create({
 
   },
   aboutImg: {
-    marginVertical: 70,
+    marginTop: 50,
+    marginBottom: 5,
     borderRadius: 10,
     resizeMode: 'cover',
     width: 310,
     height: 300,
   },
   aboutTextLink: {
+    marginBottom: 2,
     fontSize: 18,
     color: '#24A0ED',
     textDecorationLine: 'underline',
   },
   aboutText: {
+    marginBottom: 5,
     alignItems: 'center',
     fontSize: 18,
     width: 310,

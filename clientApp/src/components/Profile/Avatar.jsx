@@ -12,7 +12,7 @@ function Avatar({ auth }) {
           width: 200,
           //   overflow: 'visible',
           borderRadius: 100,
-          margin: 100,
+          margin: 50,
         }}
       />
     </View>

@@ -18,3 +18,5 @@ export const QESTION_CATEGORY = 'QESTION_CATEGORY';
 // export const CATEGORY_MID = 'CATEGORY_MID';
 // export const CATEGORY_SEN = 'CATEGORY_SEN';
 // export const CATEGORY_JOB = 'CATEGORY_JOB';
+
+// fot theme

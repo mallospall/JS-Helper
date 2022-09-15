@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   Animated, StyleSheet, Text, View,
 } from 'react-native';
+import themeContext from '../config/themeContext';
 import styles from '../Homescreen/stylesHomePage';
 
 function Progress({ step, steps, height }) {
@@ -12,6 +13,7 @@ function Progress({ step, steps, height }) {
   const [width, setWidth] = useState(0);
   const animatedValue = useRef(new Animated.Value(-1000)).current;
   const reactive = useRef(new Animated.Value(-1000)).current;
+  const theme = useContext(themeContext);
 
   useEffect(() => {
     Animated.timing(animatedValue, {
@@ -33,7 +35,7 @@ function Progress({ step, steps, height }) {
           fontSize: 14,
           fontWeight: '900',
           marginBottom: 4,
-          color: 'white',
+          color: theme.color,
         }}
       >
         Ваш прогресс:
