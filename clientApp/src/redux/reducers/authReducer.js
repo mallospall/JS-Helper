@@ -1,4 +1,5 @@
 /* eslint-disable default-param-last */
+
 import {
   LOGOUT, SET_AUTH,
 } from '../types/types';

@@ -1,41 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { ScrollView, useWindowDimensions, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import RenderHtml from 'react-native-render-html';
 
-function Qestion() {
-  // const [back, setBack] = useState(null);
-  // const qestionBack = async () => {
-  //   try {
-  //     const response = await fetch('http://172.20.10.4:3002/question');
-  //     const json = await response.json();
-  //     setBack(json);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  //   //   .then((res) => res.json())
-  //   //   .then((data) => setBack(data[0]));
-  // };
-  // useEffect(() => {
-  //   qestionBack();
-  // }, []);
-  // console.log('------>', back);
+// const source = {
+//   html: `<pre style='height: 10em; background-color: rgba(255, 255, 128, .5);'>
+// <code>
+//  Что такое DOM?
+//  --
+//  '
+//  ;
+//  ;
+//  -
+//  f
+//  f
+//  f
+//  f
+//  f
+// </code>
+// </pre>`,
+// };
+function Qestion({ currentQestionId }) {
+  const { qestionCategory } = useSelector((state) => state);
+  const { width, height } = useWindowDimensions();
+  const [first, setfirst] = useState({ html: '' });
+  useEffect(() => {
+    const gg = async () => {
+      const responce = await fetch('https://js-helper.herokuapp.com/catque', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ path: `${qestionCategory[currentQestionId]?.question}` }),
+      });
+      if (responce.ok) {
+        const data = await responce.json();
+        setfirst({ html: `${data}` });
+      }
+      // .then((res) => res.json())
+      // .then((data) => setfirst({ html: `${data}` }));
+    };
+    gg();
+  }, [currentQestionId]);
   return (
-    <View style={{
-      height: '15%',
-      alignItems: 'center',
-    }}
+    <View
+      style={{
+        flex: 2,
+        // height:444
+      }}
     >
-      <Image
-        style={{
-          width: 45,
-          height: 45,
-        }}
-        // source={{ uri: `http://localhost:3002${back?.qestion}` }}
+      {/* <ScrollView> */}
+      <RenderHtml
+        contentWidth={width}
+        source={first}
       />
-
-      <Text style={{ fontSize: 25 }}>
-        {/* {back?.list} */}
-        text
-      </Text>
+      {/* </ScrollView> */}
     </View>
   );
 }
