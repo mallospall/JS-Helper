@@ -2,13 +2,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Image, View } from 'react-native';
 
-function NewsIcon({ focused, size }) {
+function ComIcon({ focused, size }) {
   // console.log(focused);
   return (
   //   <View style={{flex: 0}}>
-    <Image source={require('./news.png')} resizeMode="contain" style={{ with: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
+    <Image source={require('./com.png')} resizeMode="contain" style={{ with: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
   //    </View>
   );
 }
 
-export default NewsIcon;
+export default ComIcon;

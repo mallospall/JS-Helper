@@ -8,7 +8,7 @@ function StackNavigation() {
   const { auth } = useSelector((s) => s);
   return (
     <NavigationContainer>
-      { !auth ? (
+      { auth ? (
         <AppNavigator />
       ) : (
         <AuthNavigator />
