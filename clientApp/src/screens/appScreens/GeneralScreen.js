@@ -1,13 +1,15 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState } from 'react';
 import {
   View, Text, TouchableOpacity, Linking, ScrollView, ActivityIndicator, Image,
 } from 'react-native';
 import { colors } from '../../../constants';
-import styles from '../Homescreen/stylesHomePage';
+import styles from '../../components/Homescreen/stylesHomePage';
 // import SideMenu from '../SideMenu/SideMenu';
 
 function GeneralScreen() {
   const [news, setNews] = useState([]);
+  console.log(news)
   const [load, setLoad] = useState(true);
   useEffect(() => {
     fetch('https://js-helper.herokuapp.com/news')

@@ -1,12 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
-import SideMenu from '../SideMenu/SideMenu';
+// import SideMenu from '../SideMenu/SideMenu';
 import ProgressScore from './ProgressScore';
 
-function Profile({ navigation }) {
+function Profile() {
+  const navigation = useNavigation();
   const { auth } = useSelector((s) => s);
   const dispatch = useDispatch();
   console.log(auth);
@@ -36,7 +38,7 @@ function Profile({ navigation }) {
           <Text style={styles.buttonText}>О проекте</Text>
         </TouchableOpacity>
       </View>
-      <SideMenu navigation={navigation} />
+      {/* <SideMenu navigation={navigation} /> */}
     </>
   );
 }

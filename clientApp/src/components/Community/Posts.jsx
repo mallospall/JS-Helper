@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function Post({ post }) {
+function Posts({ post }) {
   const navigation = useNavigation();
 
   return (
@@ -77,4 +77,4 @@ const style = StyleSheet.create({
 
 });
 
-export default Post;
+export default Posts;

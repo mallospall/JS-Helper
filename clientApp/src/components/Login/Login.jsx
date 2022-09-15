@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import { login } from '../../redux/actions/authAction';
 import { colors } from '../../../constants';
 import styles from '../Homescreen/stylesHomePage';
@@ -21,7 +21,7 @@ function Login() {
   const { load } = useSelector((s) => s);
   const dispatch = useDispatch();
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   const [inputs, setInputs] = useState({ email: '', password: '' });
 
@@ -40,12 +40,12 @@ function Login() {
         },
       );
       const res = await response.json();
-      console.log(res);
+      // console.log(res);
       if (res) {
         dispatch(login(res));
         dispatch(loading());
         await AsyncStorage.setItem('session', JSON.stringify(res));
-        navigation.navigate('General');
+        // navigation.navigate('General');
       } else {
         dispatch(loading());
         Alert.alert('Введеные данные не верны');

@@ -5,10 +5,10 @@ import {
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../../../constants';
-import { createPOST, CREATE_POST_THUNK, getPOSTS, GET_POST_THUNK } from '../../redux/actions/postAction';
+import { createPOST, getPOSTS } from '../../redux/actions/postAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
-import Post from './Post';
+import Posts from './Posts';
 
 function Community() {
   const { auth, posts } = useSelector((s) => s);
@@ -86,7 +86,7 @@ function Community() {
               style={styles.activityIndicatorStyles}
             />
           ) : (
-            posts?.map((el) => <Post key={el.id} post={el} />)
+            posts?.map((el) => <Posts key={el.id} post={el} />)
           )}
         </ScrollView>
       </View>
@@ -125,7 +125,7 @@ function Community() {
         </View>
       </Modal>
 
-      <SideMenu />
+      {/* <SideMenu /> */}
     </>
 
   );

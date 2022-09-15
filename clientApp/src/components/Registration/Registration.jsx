@@ -8,12 +8,14 @@ import {
   StyleSheet, Text, TextInput, View,
   TouchableOpacity, Alert, AsyncStorage, KeyboardAvoidingView, ActivityIndicator,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../../constants';
 import { login } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
 import { loading } from '../../redux/actions/loadAction';
 
-function Registration({ navigation }) {
+function Registration() {
+  const navigation = useNavigation();
   const { load } = useSelector((s) => s);
   const [inputs, setInputs] = useState({ userName: '', email: '', password: '' });
 
@@ -39,7 +41,7 @@ function Registration({ navigation }) {
         dispatch(login(res));
         dispatch(loading());
         await AsyncStorage.setItem('session', JSON.stringify(res));
-        navigation.navigate('General');
+        // navigation.navigate('General');
       } else {
         Alert.alert('Такой email или nickname уже занят');
         dispatch(loading());

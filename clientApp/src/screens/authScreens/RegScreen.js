@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text } from 'react-native';
+import Registration from '../../components/Registration/Registration';
 
-function RegScreen(props) {
+function RegScreen() {
   return (
-
-    <Text>Login Screen</Text>
+    <Registration />
 
   );
 }
