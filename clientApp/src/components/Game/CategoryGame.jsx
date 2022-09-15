@@ -2,22 +2,28 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { colors } from '../../../constants';
-import { GET_QESTION_CATEGORY_THUNK } from '../../redux/actions/qestionAction';
+import { GET_QESTION_CATEGORY_THUNK, getQestionCategory } from '../../redux/actions/qestionAction';
 
 function CategoryGame({ navigation }) {
   const dispatch = useDispatch();
 
-  const categoryHandel = (categoryName) => {
+  const categoryHandel = async (categoryName) => {
     if (categoryName === 'jun') {
       dispatch(GET_QESTION_CATEGORY_THUNK(1));
+      navigation.navigate('Game');
     } else if (categoryName === 'mid') {
       dispatch(GET_QESTION_CATEGORY_THUNK(2));
+      navigation.navigate('Game');
     } else if (categoryName === 'sen') {
       dispatch(GET_QESTION_CATEGORY_THUNK(3));
+      const response = await fetch(`https://js-helper.herokuapp.com/question/${3}`);
+      const json = await response.json();
+      dispatch(getQestionCategory(json));
+      navigation.navigate('Game');
     } else if (categoryName === 'rev') {
       dispatch(GET_QESTION_CATEGORY_THUNK(4));
+      navigation.navigate('GameDev');
     }
-    navigation.navigate('Game');
   };
 
   return (

@@ -1,45 +1,66 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
+import { login, LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
-// import SideMenu from '../SideMenu/SideMenu';
+import Avatar from './Avatar';
 import ProgressScore from './ProgressScore';
 
 function Profile() {
   const navigation = useNavigation();
   const { auth } = useSelector((s) => s);
   const dispatch = useDispatch();
-  console.log(auth);
+
   const logoutHandler = () => {
     dispatch(LOGOUT_SESSION_THUNK());
-    navigation.navigate('Home');
   };
+
+  useEffect(() => {
+    const prof = async () => {
+      const response = await fetch(`https://js-helper.herokuapp.com/stat/0/${auth?.id}`);
+      const json = await response.json();
+      dispatch(login(json));
+    };
+    prof();
+  }, []);
   return (
-    <>
+    <View
+      style={styles.lk}
+    >
+      <Avatar auth={auth} />
       <View
-        style={styles.lk}
+        style={{
+          color: 'white',
+        }}
       >
-        <ProgressScore auth={auth} />
-        <Text>{auth?.name}</Text>
-        <TouchableOpacity
-          style={styles.cardButton}
-          title="Logout"
-          onPress={logoutHandler}
+        <Text style={{
+          fontFamily: 'Menlo',
+          fontSize: 30,
+          fontWeight: '900',
+          marginBottom: 40,
+          color: 'white',
+        }}
         >
-          <Text style={styles.buttonText}>Выход</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cardButton}
-          title="Logout"
-          onPress={() => navigation.navigate('About')}
-        >
-          <Text style={styles.buttonText}>О проекте</Text>
-        </TouchableOpacity>
+          {auth?.userName}
+        </Text>
       </View>
-      {/* <SideMenu navigation={navigation} /> */}
-    </>
+      <ProgressScore auth={auth} />
+      <TouchableOpacity
+        style={styles.cardButton}
+        title="Logout"
+        onPress={logoutHandler}
+      >
+        <Text style={styles.buttonText}>Выход</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.cardButton}
+        title="Logout"
+        onPress={() => navigation.navigate('About')}
+      >
+        <Text style={styles.buttonText}>О проекте</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 

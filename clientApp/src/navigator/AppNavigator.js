@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 import BottomTabNavigator from './BottomTabNavigator';
 
 const AppStack = createNativeStackNavigator();

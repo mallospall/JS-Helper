@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, Modal, Alert, ActivityIndicator,
+  TouchableOpacity, TextInput,
 } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../../../constants';
 import { createPOST, getPOSTS } from '../../redux/actions/postAction';
 import styles from '../Homescreen/stylesHomePage';
-import SideMenu from '../SideMenu/SideMenu';
 import Posts from './Posts';
 
 function Community() {
@@ -35,7 +34,6 @@ function Community() {
     if (inputs.title !== '' && inputs.text !== '') {
       setLoad(true);
       setToggle(!toggle);
-      console.log('inputs -----> ', inputs);
       const responce = await fetch(
         `https://js-helper.herokuapp.com/posts/${auth?.id}`,
         {
@@ -49,7 +47,6 @@ function Community() {
       setInputs({ title: '', text: '' });
       if (responce.ok) {
         const data = await responce.json();
-        console.log('data---->', data, typeof data);
         dispatch(createPOST(data));
         setLoad(false);
       } else {
@@ -124,8 +121,6 @@ function Community() {
           </TouchableOpacity>
         </View>
       </Modal>
-
-      {/* <SideMenu /> */}
     </>
 
   );

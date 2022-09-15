@@ -4,11 +4,13 @@ import {
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { colors } from '../../../constants';
+import { colors, styles } from '../../../constants';
 import { SENDING_SCORE_THUNK } from '../../redux/actions/qestionAction';
+import { login } from '../../redux/actions/authAction';
+import { useNavigation } from '@react-navigation/native';
 
-function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
-  // const { qestions } = useSelector((state) => state);
+function Buttons({ currentQestionId, setCurrentQestionId }) {
+  const navigation = useNavigation();
   const { qestionCategory } = useSelector((state) => state);
   const { auth } = useSelector((state) => state);
   const priseQestion = qestionCategory[0]?.Category.price;
@@ -21,7 +23,6 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const [score, setScore] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
   const [showScoreModal, setShowScoreModal] = useState(false);
-
   const splitListCateg = qestionCategory[currentQestionId]?.list.split('|');
 
   const validateAnswer = (selectedOption) => {
@@ -37,7 +38,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
     setShowNextButton(true);
   };
 
-  const nextHandler = () => {
+  const nextHandler = async () => {
     if (currentQestionId === qestionCategory.length - 1) {
       setShowScoreModal(true);
       dispatch(SENDING_SCORE_THUNK(score, auth?.id));
@@ -56,7 +57,6 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
           onPress={nextHandler}
           style={{
             marginTop: 20,
-            width: '100%',
             backgroundColor: colors.buttonColor,
             padding: 20,
             borderRadius: 10,
@@ -92,6 +92,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
             justifyContent: 'space-between',
             paddingHorizontal: 20,
             marginVertical: 10,
+            backgroundColor: colors.buttonColor,
           }}
           onPress={() => validateAnswer(elem)}
           key={elem}
@@ -166,7 +167,7 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
         >
           <View style={{
             backgroundColor: 'white',
-            width: '90%',
+            // width: '90%',  <===========
             borderRadius: 20,
             padding: 20,
             alignItems: 'center',
@@ -202,12 +203,12 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
           </View>
           {/* RETURN TO MAIN BUTTON */}
           <TouchableOpacity
-            onPress={() => navigation.navigate('General')}
+            onPress={() => navigation.navigate('Category')}
             style={{
               backgroundColor: 'blue',
               padding: 20,
               margin: 20,
-              width: '100%',
+              // width: '100%', <===========
               borderRadius: 20,
             }}
           >

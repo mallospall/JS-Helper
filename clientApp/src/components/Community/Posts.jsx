@@ -3,9 +3,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
-  View, Text, Image, StyleSheet,
+  View, Text, Image, StyleSheet, TouchableOpacity,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Posts({ post }) {
   const navigation = useNavigation();
@@ -29,7 +28,6 @@ function Posts({ post }) {
         <Text style={style.text}>{post?.User?.userName}</Text>
       </View>
       <Text style={style.text}>{post?.title}</Text>
-      {/* <Text style={style.text} >{post.text}</Text> */}
       <TouchableOpacity onPress={() => navigation.navigate('Post', post)}>
         <View style={{
           borderColor: '#F2F3F4', borderWidth: 5, borderRadius: 50, width: 260, marginStart: 30, marginTop: 20,

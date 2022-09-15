@@ -9,7 +9,6 @@ import styles from '../../components/Homescreen/stylesHomePage';
 
 function GeneralScreen() {
   const [news, setNews] = useState([]);
-  console.log(news)
   const [load, setLoad] = useState(true);
   useEffect(() => {
     fetch('https://js-helper.herokuapp.com/news')
