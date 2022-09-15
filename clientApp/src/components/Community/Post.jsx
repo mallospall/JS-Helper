@@ -9,7 +9,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Post({ post }) {
   const navigation = useNavigation();
-  console.log(post);
   return (
     <View style={style.post}>
       {post.postState ? (

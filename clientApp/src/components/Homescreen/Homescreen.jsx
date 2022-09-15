@@ -10,11 +10,9 @@ import themeContext from '../config/themeContext';
 import styles from './stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 
-function Homescreen({ navigation, mode }) {
+function Homescreen({ navigation }) {
   const theme = useContext(themeContext);
-  console.log('>>>>>>>>>>>?????????????', theme);
   const { auth } = useSelector((s) => s);
-  console.log('auth--->', auth);
 
   const dispatch = useDispatch();
   useEffect(() => {

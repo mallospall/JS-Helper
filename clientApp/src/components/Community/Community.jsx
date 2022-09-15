@@ -18,7 +18,6 @@ function Community() {
   useEffect(() => {
     dispatch(GET_POST_THUNK());
   }, []);
-  console.log(posts);
 
   const openHandler = () => {
     setToggle(!toggle);

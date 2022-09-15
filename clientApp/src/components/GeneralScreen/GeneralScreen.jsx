@@ -9,7 +9,6 @@ import SideMenu from '../SideMenu/SideMenu';
 
 function GeneralScreen({ navigation }) {
   const theme = useContext(themeContext);
-  console.log('general', theme);
   const [news, setNews] = useState([]);
   const [load, setLoad] = useState(true);
   useEffect(() => {

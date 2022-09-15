@@ -14,7 +14,6 @@ function Profile({ navigation }) {
   const [mode, setMode] = useState(false);
   const { auth } = useSelector((s) => s);
   const dispatch = useDispatch();
-  console.log(auth);
   const logoutHandler = () => {
     dispatch(LOGOUT_SESSION_THUNK());
     navigation.navigate('Home');
@@ -44,7 +43,7 @@ function Profile({ navigation }) {
             EventRegister.emit('changeTheme', value);
           }}
         />
-        <Text style={{ color: 'white' }}>Сменить тему</Text>
+        <Text style={[styles.buttonText, { color: theme.color }]}>Сменить тему</Text>
       </View>
       <SideMenu navigation={navigation} />
     </>
