@@ -16,7 +16,6 @@ function morePost({ route }) {
   const [input, setInput] = useState({ text: '' });
   const [toggle, setToggle] = useState(false);
   const [load, setLoad] = useState(false);
-
   const openHandler = () => {
     setToggle(!toggle);
   };
@@ -82,7 +81,7 @@ function morePost({ route }) {
         </View>
         <Text style={style.text}>{post?.title}</Text>
         <Text style={style.text}>{post?.text}</Text>
-        <View style={{ height: 300, width: 200 }}>
+        <View style={{ height: 450, width: 100 }}>
           <TouchableOpacity
             style={style.cardButton}
             title="Open"
@@ -93,7 +92,7 @@ function morePost({ route }) {
 
           </TouchableOpacity>
           <Text>Ответы:</Text>
-          <ScrollView>
+          <ScrollView style={{ width: 310 }}>
             { load ? (
               <ActivityIndicator
                 color={colors.GOLD}
@@ -103,7 +102,10 @@ function morePost({ route }) {
             ) : (
 
               coms.map((el) => (
-                <View style={{ marginTop: 10, borderWidth: 3, borderColor: '#fad481' }}>
+                <View style={{
+                  marginTop: 10, borderWidth: 3, borderColor: '#fad481',
+                }}
+                >
                   <View style={{ flexDirection: 'row' }}>
                     <Image style={style.image} source={{ uri: el?.User?.avatar }} />
                     <Text style={{ marginTop: 10 }}>{el?.User?.userName}</Text>
@@ -186,7 +188,7 @@ const style = StyleSheet.create({
     backgroundColor: '#fad481',
     paddingVertical: 10,
     marginVertical: 10,
-    width: 340,
+    width: 300,
     height: 50,
     borderRadius: 20,
     alignItems: 'center',
