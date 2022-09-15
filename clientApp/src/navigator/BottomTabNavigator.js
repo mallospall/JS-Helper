@@ -17,12 +17,11 @@ const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
   return (
-    <BottomTab.Navigator screenOptions={{ 
-      headerShown: false, tabBarStyle: styleBar, tabBarShowLabel: false }}>
-      <BottomTab.Screen name="General" component={GeneralNav} options={{ tabBarIcon: ({ focused, size }) => { return <NewsIcon name="quest" size={size} color={focused} />} }} />
-      <BottomTab.Screen name="Questions" component={QuestionsNav} options={{ tabBarIcon: ({ focused, size }) => (<QuestIcon name="quest" size={size} focused={focused} />) }} />
-      <BottomTab.Screen name="Flow" component={ComNav} options={{ tabBarIcon: ({ focused, size }) => (<ComIcon name="quest" size={size} focused={focused} />) }}/>
-      <BottomTab.Screen name="Profile" component={ProfleNav} options={{ tabBarIcon: ({ focused, size }) => (<ProfileIcon name="quest" size={size} focused={focused} />) }}/>
+    <BottomTab.Navigator screenOptions={{ headerShown: false, tabBarStyle: styleBar, tabBarShowLabel: false }}>
+      <BottomTab.Screen name="General" component={GeneralNav} options={{ tabBarIcon: ({ focused, size  }) => <NewsIcon name="News" size={50} color={focused} /> }} />
+      <BottomTab.Screen name="Questions" component={QuestionsNav} options={{ tabBarIcon: ({ focused, size }) => (<QuestIcon name="Quest" size={50} focused={focused} />) }} />
+      <BottomTab.Screen name="Flow" component={ComNav} options={{ tabBarIcon: ({ focused, size  }) => (<ComIcon name="Com" size={50} focused={focused} />) }} />
+      <BottomTab.Screen name="Profile" component={ProfleNav} options={{ tabBarIcon: ({ focused, size }) => (<ProfileIcon name="Prof" size={50} focused={focused} />) }} />
     </BottomTab.Navigator>
 
   );

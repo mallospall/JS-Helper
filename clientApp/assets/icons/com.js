@@ -6,7 +6,7 @@ function ComIcon({ focused, size }) {
   // console.log(focused);
   return (
   //   <View style={{flex: 0}}>
-    <Image source={require('./com.png')} resizeMode="contain" style={{ with: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
+    <Image source={require('./com.png')} resizeMode="contain" style={{ width: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
   //    </View>
   );
 }

@@ -3,11 +3,11 @@
 import { Image, View } from 'react-native';
 
 function NewsIcon({ focused, size }) {
-  // console.log(focused);
+  console.log(size);
   return (
-  //   <View style={{flex: 0}}>
-    <Image source={require('./news.png')} resizeMode="contain" style={{ with: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
-  //    </View>
+  // <View style={{flex:1}}>
+    <Image source={require('./book.png')} resizeMode="contain" style={{ width: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
+  // </View>
   );
 }
 
