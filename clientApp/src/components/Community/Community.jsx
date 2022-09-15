@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, Modal, Alert, ActivityIndicator,
+  TouchableOpacity, TextInput,
 } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../../../constants';
-import { createPOST, CREATE_POST_THUNK, getPOSTS, GET_POST_THUNK } from '../../redux/actions/postAction';
+import {
+  createPOST, CREATE_POST_THUNK, getPOSTS, GET_POST_THUNK,
+} from '../../redux/actions/postAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 import Post from './Post';
