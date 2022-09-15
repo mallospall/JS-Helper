@@ -11,3 +11,4 @@ export const GET_COMS = 'GET_COMS';
 export const CREATE_COM = 'CREATE_COM';
 export const LOADING = 'LOADING';
 
+// fot theme

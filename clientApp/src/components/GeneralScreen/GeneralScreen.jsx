@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import {
   View, Text, TouchableOpacity, Linking, ScrollView, ActivityIndicator, Image,
 } from 'react-native';
+import themeContext from '../config/themeContext';
 import { colors } from '../../../constants';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
 
 function GeneralScreen({ navigation }) {
+  const theme = useContext(themeContext);
+  console.log('general', theme);
   const [news, setNews] = useState([]);
   const [load, setLoad] = useState(true);
   useEffect(() => {
@@ -20,8 +23,13 @@ function GeneralScreen({ navigation }) {
   }, []);
   return (
     <>
-      <View style={styles.genCard}>
-        <Text style={styles.genDescription}>Главные новости в мире IT</Text>
+      <View style={[styles.genCard, { backgroundColor: theme.backgroundColor }]}>
+        <Text style={[styles.genDescription,
+          { color: theme.color }]}
+        >
+          Главные новости в мире IT
+
+        </Text>
         <ScrollView>
           {load ? (
             <ActivityIndicator
@@ -37,7 +45,7 @@ function GeneralScreen({ navigation }) {
                   style={styles.itImage}
                   source={{ uri: el.images }}
                 />
-                <Text style={styles.genNew}>
+                <Text style={styles.genNewSecond}>
                   {el.subTitle}
                 </Text>
               </TouchableOpacity>

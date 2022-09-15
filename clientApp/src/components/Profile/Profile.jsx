@@ -1,11 +1,17 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useContext } from 'react';
+import {
+  View, Text, TouchableOpacity, Switch,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { EventRegister } from 'react-native-event-listeners';
 import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
+import themeContext from '../config/themeContext';
 
 function Profile({ navigation }) {
+  const theme = useContext(themeContext);
+  const [mode, setMode] = useState(false);
   const { auth } = useSelector((s) => s);
   const dispatch = useDispatch();
   console.log(auth);
@@ -15,8 +21,8 @@ function Profile({ navigation }) {
   };
   return (
     <>
-      <View style={styles.card}>
-        <Text style={styles.buttonText} >{auth?.userName}</Text>
+      <View style={[styles.card, { backgroundColor: theme.backgroundColor }]}>
+        <Text style={[styles.buttonText, { color: theme.color }]}>{auth?.userName}</Text>
         <TouchableOpacity
           style={styles.cardButton}
           title="Logout"
@@ -31,6 +37,14 @@ function Profile({ navigation }) {
         >
           <Text style={styles.buttonText}>О проекте</Text>
         </TouchableOpacity>
+        <Switch
+          value={mode}
+          onValueChange={(value) => {
+            setMode(value);
+            EventRegister.emit('changeTheme', value);
+          }}
+        />
+        <Text style={{ color: 'white' }}>Сменить тему</Text>
       </View>
       <SideMenu navigation={navigation} />
     </>
