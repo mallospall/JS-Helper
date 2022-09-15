@@ -66,7 +66,7 @@ function Login() {
 			  alignItems: 'center',
         }}
       >
-        {load ? <ActivityIndicator style={{flex: 1 }} /> : (
+        {load ? <ActivityIndicator style={{ flex: 1 }} /> : (
           <View style={{ width: 300 }}>
             <TextInput
               style={stylesCreated.input}

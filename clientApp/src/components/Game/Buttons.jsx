@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors, styles } from '../../../constants';
 import { SENDING_SCORE_THUNK } from '../../redux/actions/qestionAction';
+import { login } from '../../redux/actions/authAction';
 
 function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
   const { qestionCategory } = useSelector((state) => state);
@@ -35,10 +36,24 @@ function Buttons({ currentQestionId, setCurrentQestionId, navigation }) {
     setShowNextButton(true);
   };
 
-  const nextHandler = () => {
+  const nextHandler = async () => {
     if (currentQestionId === qestionCategory.length - 1) {
       setShowScoreModal(true);
       dispatch(SENDING_SCORE_THUNK(score, auth?.id));
+      // const response = await fetch(
+      //   'https://js-helper.herokuapp.com/login',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       Accept: 'application/json',
+      //       'Content-type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ email: auth.email }),
+      //   },
+      // );
+      // const res = await response.json();
+      // console.log('try to fethch exp');
+      // dispatch(login(res));
     }
     setCurrentQestionId(currentQestionId + 1);
     setCurrentOptionSelected(null);

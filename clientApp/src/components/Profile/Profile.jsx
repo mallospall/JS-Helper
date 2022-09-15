@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { LOGOUT_SESSION_THUNK } from '../../redux/actions/authAction';
 import styles from '../Homescreen/stylesHomePage';
 import SideMenu from '../SideMenu/SideMenu';
+import Avatar from './Avatar';
 import ProgressScore from './ProgressScore';
 
 function Profile({ navigation }) {
@@ -19,6 +20,7 @@ function Profile({ navigation }) {
       <View
         style={styles.lk}
       >
+        <Avatar auth={auth} />
         <ProgressScore auth={auth} />
         <Text>{auth?.name}</Text>
         <TouchableOpacity
