@@ -4,6 +4,13 @@ import {
 import { colors } from '../../../constants';
 
 const styles = StyleSheet.create({
+  itImage: {
+    marginVertical: 20,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    width: 340,
+    height: 300,
+  },
   activityIndicatorStyles: {
     height: 80,
     justifyContent: 'center',
@@ -15,7 +22,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.mainColor,
   },
   genDescription: {
-    paddingVertical: 60,
+    paddingTop: 60,
+    paddingBottom: 20,
     textAlign: 'center',
     textDecorationLine: 'underline',
     color: 'white',

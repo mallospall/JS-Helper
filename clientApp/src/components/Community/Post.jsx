@@ -9,10 +9,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Post({ post }) {
   const navigation = useNavigation();
-  console.log(post);
+
   return (
     <View style={style.post}>
-      {post.postState ? (
+      {post?.postState ? (
         <View style={{
           borderColor: '#FF000', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
         }}
@@ -25,10 +25,10 @@ function Post({ post }) {
           />
         )}
       <View style={style.head}>
-        <Image style={style.image} source={{ uri: post.User.avatar }} />
-        <Text style={style.text}>{post.User.userName}</Text>
+        <Image style={style.image} source={{ uri: post?.User?.avatar }} />
+        <Text style={style.text}>{post?.User?.userName}</Text>
       </View>
-      <Text style={style.text}>{post.title}</Text>
+      <Text style={style.text}>{post?.title}</Text>
       {/* <Text style={style.text} >{post.text}</Text> */}
       <TouchableOpacity onPress={() => navigation.navigate('Post', post)}>
         <View style={{
