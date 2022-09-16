@@ -38,10 +38,11 @@ function Profile() {
 
         <Text style={{
           fontFamily: 'Menlo',
-          fontSize: 30,
+          fontSize: 24,
           fontWeight: '900',
           marginBottom: 40,
           color: theme.color,
+          textAlign: 'center',
         }}
         >
           {auth?.userName}
@@ -63,7 +64,7 @@ function Profile() {
         >
           <Text style={styles.buttonText}>О проекте</Text>
         </TouchableOpacity>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <View>
           <Switch
             value={mode}
             onValueChange={(value) => {

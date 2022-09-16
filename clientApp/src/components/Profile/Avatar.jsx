@@ -8,11 +8,11 @@ function Avatar({ auth }) {
       <Image
         source={{ uri: auth?.avatar }}
         style={{
-          height: 200,
-          width: 200,
+          height: 150,
+          width: 150,
           //   overflow: 'visible',
           borderRadius: 100,
-          margin: 50,
+          marginBottom: 20,
         }}
       />
     </View>
