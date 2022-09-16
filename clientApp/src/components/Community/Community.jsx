@@ -58,10 +58,10 @@ function Community() {
       }
     } else { Alert.alert('Заполните все поля'); }
   };
-console.log(theme)
+  console.log(theme)
   return (
     <>
-      <View style={{backgroundColor: theme.backgroundColor}}>
+      <View style={{ backgroundColor: theme.backgroundColor, flex: 1 }}>
         <ScrollView style={style.card}>
           <View style={style.form}>
             <Text style={style.headText}>
@@ -91,7 +91,7 @@ console.log(theme)
         </ScrollView>
       </View>
       <Modal animationType="slide" transparent visible={toggle}>
-        <View style={styles.card}>
+        <View style={{ backgroundColor: theme.backgroundColor, flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={style.headText}>Заголовок</Text>
           <TextInput
             style={style.input}
