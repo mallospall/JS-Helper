@@ -2,9 +2,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Image } from 'react-native';
 
-function ProfileIcon({ focused}) {
+function ProfileIcon({ focused }) {
   return (
-      <Image source={require('./profile.png')} resizeMode="contain" style={{ width: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
+    <Image source={require('../../src/components/SideMenu/icons/profile.png')} resizeMode="contain" style={{ width: 80, height: 80, tintColor: focused ? '#e32f45' : '#748c94' }} />
   );
 }
 
