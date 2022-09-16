@@ -12,7 +12,7 @@ import styles from '../Homescreen/stylesHomePage';
 import Posts from './Posts';
 
 function Community() {
-  const theme = useContext(themeContext)
+  const theme = useContext(themeContext);
   const { auth, posts } = useSelector((s) => s);
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({ title: '', text: '' });
@@ -58,13 +58,13 @@ function Community() {
       }
     } else { Alert.alert('Заполните все поля'); }
   };
-  console.log(theme)
+  console.log(theme);
   return (
     <>
       <View style={{ backgroundColor: theme.backgroundColor, flex: 1 }}>
         <ScrollView style={style.card}>
-          <View style={style.form}>
-            <Text style={style.headText}>
+          <View style={[style.form, { backgroundColor: theme.commentBackColor }]}>
+            <Text style={[style.headText, { color: theme.commentColor }]}>
 
               Напишите о своей проблеме или помогите другим решить ее
 
@@ -91,7 +91,10 @@ function Community() {
         </ScrollView>
       </View>
       <Modal animationType="slide" transparent visible={toggle}>
-        <View style={{ backgroundColor: theme.backgroundColor, flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={{
+          backgroundColor: theme.backgroundColor, flex: 1, justifyContent: 'center', alignItems: 'center',
+        }}
+        >
           <Text style={style.headText}>Заголовок</Text>
           <TextInput
             style={style.input}

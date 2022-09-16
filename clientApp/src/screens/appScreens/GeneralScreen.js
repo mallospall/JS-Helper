@@ -34,13 +34,22 @@ function GeneralScreen() {
             />
           ) : (
             news?.map((el, i) => (
-              <TouchableOpacity key={i} style={styles.genLinkButton} title="link" onPress={() => { Linking.openURL(el.link).catch((err) => console.log('Ошибка в соединении', err)); }}>
-                <Text key={i} style={styles.genNew}>{el.title}</Text>
+              <TouchableOpacity key={i} style={[styles.genLinkButton, { backgroundColor: theme.commentBackColor }]} title="link" onPress={() => { Linking.openURL(el.link).catch((err) => console.log('Ошибка в соединении', err)); }}>
+                <Text
+                  key={i}
+                  style={[styles.genNew,
+                    { color: theme.commentColor }]}
+                >
+                  {el.title}
+
+                </Text>
                 <Image
                   style={styles.itImage}
                   source={{ uri: el.images }}
                 />
-                <Text style={styles.genNew}>
+                <Text style={[styles.genNew,
+                  { color: theme.commentColor }]}
+                >
                   {el.subTitle}
                 </Text>
               </TouchableOpacity>

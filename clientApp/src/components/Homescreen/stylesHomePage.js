@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   genNew: {
+    padding: 7,
     fontWeight: 'bold',
     color: 'black',
     fontSize: 20,

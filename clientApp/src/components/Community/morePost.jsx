@@ -63,18 +63,7 @@ function morePost({ route }) {
   return (
     <>
       <View style={style.post}>
-        {post?.postState ? (
-          <View style={{
-            borderColor: '#FF000', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
-          }}
-          />
-        )
-          : (
-            <View style={{
-              borderColor: '#98FF98', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
-            }}
-            />
-          )}
+
         <View style={style.head}>
           <Image style={style.image} source={{ uri: post?.User?.avatar }} />
           <Text style={style.text}>{post?.User?.userName}</Text>
