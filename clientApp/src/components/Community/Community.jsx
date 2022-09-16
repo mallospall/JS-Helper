@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View, Text, ScrollView, StyleSheet, Modal, Alert, ActivityIndicator,
   TouchableOpacity, TextInput,
@@ -6,10 +6,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { colors } from '../../../constants';
 import { createPOST, getPOSTS } from '../../redux/actions/postAction';
+import theme from '../config/Theme';
+import themeContext from '../config/themeContext';
 import styles from '../Homescreen/stylesHomePage';
 import Posts from './Posts';
 
 function Community() {
+  const theme = useContext(themeContext)
   const { auth, posts } = useSelector((s) => s);
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({ title: '', text: '' });
@@ -55,11 +58,11 @@ function Community() {
       }
     } else { Alert.alert('Заполните все поля'); }
   };
-
+console.log(theme)
   return (
     <>
-      <View style={styles.card}>
-        <ScrollView>
+      <View style={{backgroundColor: theme.backgroundColor}}>
+        <ScrollView style={style.card}>
           <View style={style.form}>
             <Text style={style.headText}>
 
@@ -161,6 +164,12 @@ const style = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     width: 300,
+  },
+  card: {
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: theme.backgroundColor,
   },
 });
 

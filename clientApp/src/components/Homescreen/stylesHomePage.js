@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#24A0ED',
     textDecorationLine: 'underline',
+    textAlign: 'center',
   },
   aboutText: {
     marginBottom: 5,
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
+    textAlign: 'center',
     // fontFamily: fontsText.fontFamily,
   },
 });

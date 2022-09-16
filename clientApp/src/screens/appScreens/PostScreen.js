@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-use-before-define */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View, Text, StyleSheet, Image, ScrollView, TouchableOpacity,
   Modal, TextInput, ActivityIndicator, Alert,
@@ -10,11 +11,14 @@ import {
   createCOM, getCOMS,
 } from '../../redux/actions/postAction';
 import styles from '../../../Style';
+import themeContext from '../../components/config/themeContext';
 
 function PostScreen({ route }) {
   const [input, setInput] = useState({ text: '' });
   const [toggle, setToggle] = useState(false);
   const [load, setLoad] = useState(false);
+
+  const theme = useContext(themeContext);
 
   const openHandler = () => {
     setToggle(!toggle);
@@ -81,7 +85,7 @@ function PostScreen({ route }) {
         </View>
         <Text style={style.text}>{post?.title}</Text>
         <Text style={style.text}>{post?.text}</Text>
-        <View style={{ height: 300, width: 200 }}>
+        <View style={{ height: 450, width: 100 }}>
           <TouchableOpacity
             style={style.cardButton}
             title="Open"
@@ -92,7 +96,7 @@ function PostScreen({ route }) {
 
           </TouchableOpacity>
           <Text>Ответы:</Text>
-          <ScrollView>
+          <ScrollView style={{ width: 310 }}>
             {load ? (
               <ActivityIndicator
                 color={colors.GOLD}
@@ -185,7 +189,7 @@ const style = StyleSheet.create({
     backgroundColor: '#fad481',
     paddingVertical: 10,
     marginVertical: 10,
-    width: 340,
+    width: 300,
     height: 50,
     borderRadius: 20,
     alignItems: 'center',

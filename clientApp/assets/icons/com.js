@@ -4,7 +4,7 @@ import { Image, View } from 'react-native';
 
 function ComIcon({ focused }) {
   return (
-    <Image source={require('./com.png')} resizeMode="contain" style={{ width: 50, height: 50, tintColor: focused ? '#e32f45' : '#748c94' }} />
+    <Image source={require('../../src/components/SideMenu/icons/community.png')} resizeMode="contain" style={{ width: 70, height: 70, tintColor: focused ? '#e32f45' : '#748c94' }} />
   );
 }
 
