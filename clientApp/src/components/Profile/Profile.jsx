@@ -30,51 +30,52 @@ function Profile() {
     };
     prof();
   }, []);
-
+  console.log(theme);
   return (
-      <View style={[styles.card, { backgroundColor: theme.backgroundColor }]}>
-        <Avatar auth={auth} />
-        <View style={{ color: 'white' }}>
+    <View style={[styles.card, { backgroundColor: theme.backgroundColor }]}>
+      <Avatar auth={auth} />
+      <View style={{ color: 'white' }}>
 
-          <Text style={{
-            fontFamily: 'Menlo',
-            fontSize: 30,
-            fontWeight: '900',
-            marginBottom: 40,
-            color: theme.color,
-          }}
-          >
-            {auth?.userName}
-          </Text>
-          <ProgressScore auth={auth} />
+        <Text style={{
+          fontFamily: 'Menlo',
+          fontSize: 24,
+          fontWeight: '900',
+          marginBottom: 40,
+          color: theme.color,
+          textAlign:'center'
+        }}
+        >
+          {auth?.userName}
+        </Text>
+        <ProgressScore auth={auth} />
 
-          {/* <Text style={[styles.buttonText, { color: theme.color }]}>{auth?.userName}</Text> */}
-          <TouchableOpacity
-            style={styles.cardButton}
-            title="Logout"
-            onPress={logoutHandler}
-          >
-            <Text style={styles.buttonText}>Выход</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.cardButton}
-            title="About"
-            onPress={() => navigation.navigate('About')}
-          >
-            <Text style={styles.buttonText}>О проекте</Text>
-          </TouchableOpacity>
-          <View style={{flexDirection:'row', justifyContent:'center'}}>
-            <Switch
-              value={mode}
-              onValueChange={(value) => {
-                setMode(value);
-                EventRegister.emit('changeTheme', value);
-              }}
-            />
-            <Text style={{ color: 'white' }}>Сменить тему</Text>
-          </View>
+        {/* <Text style={[styles.buttonText, { color: theme.color }]}>{auth?.userName}</Text> */}
+        <TouchableOpacity
+          style={styles.cardButton}
+          title="Logout"
+          onPress={logoutHandler}
+        >
+          <Text style={styles.buttonText}>Выход</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cardButton}
+          title="About"
+          onPress={() => navigation.navigate('About')}
+        >
+          <Text style={styles.buttonText}>О проекте</Text>
+        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Switch
+            value={mode}
+            onValueChange={(value) => {
+              setMode(value);
+              EventRegister.emit('changeTheme', value);
+            }}
+          />
         </View>
+        <Text style={[styles.buttonText, { color: theme.color }]}>Сменить тему</Text>
       </View>
+    </View>
   );
 }
 
