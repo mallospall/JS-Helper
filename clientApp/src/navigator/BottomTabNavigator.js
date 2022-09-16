@@ -29,12 +29,14 @@ function BottomTabNavigator() {
 
 const styleBar = StyleSheet.create({
   activeTintColor: 'rgba(0, 122, 255, 1)',
-  // backgroundColor: '#363636',
-  borderRadius: 15,
+  backgroundColor: '#fad481',
+  // borderRadius: 15,
   // bottom: 25,
   // left: 20,
   // marginRight: 20,
   position: 'absolute',
+  paddingTop: 30,
+  paddingBottom: 30,
 
 });
 

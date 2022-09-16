@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
+    textAlign: 'center',
     // fontFamily: fontsText.fontFamily,
   },
 });

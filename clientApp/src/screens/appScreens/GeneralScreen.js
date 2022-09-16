@@ -1,14 +1,16 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   View, Text, TouchableOpacity, Linking, ScrollView, ActivityIndicator, Image,
 } from 'react-native';
 import { colors } from '../../../constants';
+import themeContext from '../../components/config/themeContext';
 import styles from '../../components/Homescreen/stylesHomePage';
 // import SideMenu from '../SideMenu/SideMenu';
 
 function GeneralScreen() {
   const [news, setNews] = useState([]);
+  const theme = useContext(themeContext);
   const [load, setLoad] = useState(true);
   useEffect(() => {
     fetch('https://js-helper.herokuapp.com/news')
@@ -21,8 +23,8 @@ function GeneralScreen() {
   }, []);
   return (
     <>
-      <View style={styles.genCard}>
-        <Text style={styles.genDescription}>Главные новости в мире IT</Text>
+      <View style={[styles.genCard, { backgroundColor: theme.backgroundColor }]}>
+        <Text style={[styles.genDescription, { color: theme.color }]}>Главные новости в мире IT</Text>
         <ScrollView>
           {load ? (
             <ActivityIndicator

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { colors } from '../../../constants';
 import { GET_QESTION_CATEGORY_THUNK, getQestionCategory } from '../../redux/actions/qestionAction';
+import themeContext from '../config/themeContext';
 
 function CategoryGame({ navigation }) {
   const dispatch = useDispatch();
+ const theme = useContext(themeContext);
 
   const categoryHandel = async (categoryName) => {
     if (categoryName === 'jun') {
@@ -20,16 +22,13 @@ function CategoryGame({ navigation }) {
       const json = await response.json();
       dispatch(getQestionCategory(json));
       navigation.navigate('Game');
-    } else if (categoryName === 'rev') {
-      dispatch(GET_QESTION_CATEGORY_THUNK(4));
-      navigation.navigate('GameDev');
     }
   };
 
   return (
     <View
       style={{
-        backgroundColor: colors.mainColor,
+        backgroundColor: theme.backgroundColor,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -37,7 +36,7 @@ function CategoryGame({ navigation }) {
     >
       <Text
         style={{
-          color: 'white',
+          color: theme.color,
           fontSize: 30,
         }}
       >
@@ -104,7 +103,7 @@ function CategoryGame({ navigation }) {
           </Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => categoryHandel('rev')}
       >
         <View
@@ -123,7 +122,7 @@ function CategoryGame({ navigation }) {
             Job
           </Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
