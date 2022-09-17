@@ -66,26 +66,22 @@ function PostScreen({ route }) {
 
   return (
     <>
-      <View style={style.post}>
-        {post?.postState ? (
-          <View style={{
-            borderColor: '#FF000', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
-          }}
-          />
-        )
-          : (
-            <View style={{
-              borderColor: '#98FF98', borderWidth: 5, borderRadius: 50, width: 30, marginStart: 280,
-            }}
-            />
-          )}
+      <View style={[style.post, { backgroundColor: theme.backgroundColor }]}>
         <View style={style.head}>
           <Image style={style.image} source={{ uri: post?.User?.avatar }} />
-          <Text style={style.text}>{post?.User?.userName}</Text>
+          <Text style={[style.text, { color: theme.color }]}>{post?.User?.userName}</Text>
         </View>
-        <Text style={style.text}>{post?.title}</Text>
-        <Text style={style.text}>{post?.text}</Text>
-        <View style={{ height: 450, width: 100 }}>
+        <View style={style.postHeaderText}>
+          <Text style={[style.text, { color: theme.color }]}>
+            {post?.title}
+
+          </Text>
+          <Text style={[style.text, { color: theme.color }]}>{post?.text}</Text>
+        </View>
+        <View style={{
+          justifyContent: 'center', alignContent: 'center', alignItems: 'center',
+        }}
+        >
           <TouchableOpacity
             style={style.cardButton}
             title="Open"
@@ -95,7 +91,12 @@ function PostScreen({ route }) {
             <Text style={styles.buttonText}>Написать ответ</Text>
 
           </TouchableOpacity>
-          <Text>Ответы:</Text>
+          <Text style={[
+            { color: theme.color }]}
+          >
+            Ответы:
+
+          </Text>
           <ScrollView style={{ width: 310 }}>
             {load ? (
               <ActivityIndicator
@@ -106,12 +107,26 @@ function PostScreen({ route }) {
             ) : (
 
               coms.map((el) => (
-                <View style={{ marginTop: 10, borderWidth: 3, borderColor: '#fad481' }}>
+                <View style={[{
+                  marginTop: 10, borderRadius: 7, paddingHorizontal: 7, paddingVertical: 7,
+                },
+                { backgroundColor: theme.commentBackColor }]}
+                >
                   <View style={{ flexDirection: 'row' }}>
                     <Image style={style.image} source={{ uri: el?.User?.avatar }} />
-                    <Text style={{ marginTop: 10 }}>{el?.User?.userName}</Text>
+                    <Text style={[{ marginTop: 10 },
+                      { color: theme.commentColor }]}
+                    >
+                      {el?.User?.userName}
+
+                    </Text>
                   </View>
-                  <Text>{el?.text}</Text>
+                  <Text style={[{ marginTop: 10 },
+                    { color: theme.commentColor }]}
+                  >
+                    {el?.text}
+
+                  </Text>
                 </View>
               ))
             )}
@@ -154,17 +169,13 @@ function PostScreen({ route }) {
 const style = StyleSheet.create({
   post: {
     flex: 1,
-    padding: 20,
-    borderColor: '#fad481',
-    borderWidth: 10,
-    borderRadius: 50,
-    marginTop: 30,
     backgroundColor: '#808080',
   },
   image: {
     resizeMode: 'stretch',
     width: 40,
     height: 40,
+    marginRight: 7,
     // flex: 1,
     borderRadius: 50,
 
@@ -175,6 +186,8 @@ const style = StyleSheet.create({
   },
   head: {
     flexDirection: 'row',
+    marginTop: 30,
+    marginLeft: 10,
   },
   status: {
     marginTop: 54,
