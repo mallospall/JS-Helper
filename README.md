@@ -13,7 +13,7 @@
 
 ![login (1)](https://user-images.githubusercontent.com/108213499/191015950-5de541a2-53fa-4806-a79f-97ce20c1fbeb.png)
 
-![profile (1)](https://user-images.githubusercontent.com/108213499/191017207-00c57109-e072-4f7c-9baa-fcd0c00b98c7.png)
+![profile (2)](https://user-images.githubusercontent.com/108213499/191017691-f2dfbffe-2b0d-4073-859e-35ebca69c80a.png)
 
 ![quest (1)](https://user-images.githubusercontent.com/108213499/191016341-75fd46e7-85ad-4f97-a385-f3a9750166db.png)
 
